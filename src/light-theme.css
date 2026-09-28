@@ -1,0 +1,24 @@
+/* Shenma Live · light sports content theme */
+:root{--bg:#f5f7fa;--surface:#fff;--surface2:#f8fafc;--line:#e7ebf0;--muted:#8a94a3;--text:#202632;--accent:#ff5a43;--max:1360px}
+html,body{background:var(--bg);color:var(--text)}
+body{background:linear-gradient(180deg,#fff6f3 0,#f5f7fa 320px);color:var(--text)}
+.site-header{background:rgba(255,255,255,.94);border-bottom:1px solid #e6eaf0;box-shadow:0 2px 12px rgba(37,51,70,.045)}
+.brand{color:#252b36}.brand-mark{background:linear-gradient(135deg,#ff725d,#ff493d);box-shadow:0 5px 10px rgba(255,82,61,.18)}
+.main-nav a{color:#596170}.main-nav a:hover{color:var(--accent);background:#fff3f1}.main-nav a.active{color:var(--accent)}.main-nav a.active:after{background:var(--accent)}
+.search{background:#f5f7fa;border-color:#e4e9ef;color:#8a94a3}.search:focus-within{border-color:#ffb7ac;background:#fff;box-shadow:0 0 0 3px #fff0ed}.search input{color:var(--text)}
+.utility{color:#5e6878}.utility:hover{color:var(--accent)}.utility i{color:#7d8796}.go-live{background:linear-gradient(110deg,#ff6b55,#ff4c3d);box-shadow:0 7px 17px rgba(255,72,53,.2)}
+.avatar-btn img{border-color:#e7eaf0}.online-dot{border-color:#fff}.user-menu{background:#fff;border-color:#e7ebf0;box-shadow:0 15px 35px rgba(29,40,57,.14)}.user-menu b{color:#303744}.user-menu a,.user-menu button{color:#687283}.user-menu a:hover,.user-menu button:hover{color:var(--accent)}
+.featured-wrap{padding-top:24px}.featured{background:#fff;border-color:#e3e8ee;box-shadow:0 12px 30px rgba(38,51,69,.08)}
+.stage{background:#111820}.stage-shade{background:linear-gradient(90deg,rgba(7,13,20,.54),transparent 52%),linear-gradient(0deg,rgba(3,8,14,.92),transparent 43%)}
+.scoreboard,.scoreboard strong,.scoreboard b,.stage-meta b{color:#fff}.scoreboard span{color:#e5e9ee}.stage-meta small{color:#d7dde4}
+.channel-list{background:#eef2f5}.channel{background:#fff;border-bottom:0;box-shadow:inset 0 0 0 2px transparent}.channel:hover{background:#fff;filter:brightness(.98)}.channel.selected{background:#fff;box-shadow:inset 0 0 0 3px var(--accent)}
+.content-section{padding-top:52px}.section-head h2{color:#252b36}.section-head a{color:var(--accent)}.section-head a:hover{color:#e84433}
+.live-card{background:#fff;border-color:#e5eaf0;box-shadow:0 4px 12px rgba(38,51,69,.045)}.live-card:hover{border-color:#ffd2cb;box-shadow:0 15px 26px rgba(47,61,78,.13)}
+.card-copy h3{color:#29313d}.host-row{color:#778191}.host-row em{color:#748091}.cover{background:#e9edf1}.cover .tag{background:#fff7f5;color:var(--tag,#f05e49);border:1px solid color-mix(in srgb,var(--tag,#f05e49) 22%,white);box-shadow:0 2px 7px rgba(25,34,45,.06)}.card-play{box-shadow:0 6px 16px rgba(20,29,42,.22)}
+.rank-card{background:#fff;border-color:#e4e9ef;box-shadow:0 4px 13px rgba(38,51,69,.035)}.rank-tabs{background:#fbfcfd;border-bottom-color:#e8ecf1}.rank-tabs button{color:#7d8795}.rank-tabs button:hover{color:var(--accent)}.rank-tabs button.selected{color:var(--accent);font-weight:700}.rank-tabs button.selected:after{background:var(--accent)}
+.rank-title{color:#252b36}.rank-title small{color:#98a1ae}.conference{background:#f0f3f6}.conference button{color:#7a8492}.conference button.on{background:#fff;color:var(--accent);box-shadow:0 1px 4px rgba(40,51,66,.1)}
+.rank-row{color:#606b7a;border-top-color:#eef1f4}.rank-row:not(.table-head):hover{background:#fff4f1;color:#252b36}.table-head{color:#99a2ae}.rank-num{color:#87909d}.rank-num.n1{color:#ed9a16}.rank-num.n2{color:#8390a0}.rank-num.n3{color:#b8784c}.team b{color:#343c48}.rank-row strong{color:#303846}.form{color:#23a36d}.team-mark{box-shadow:0 0 0 1px #dce2e8}
+footer{background:#eef1f4;border-top-color:#e1e6eb}.footer-brand{color:#303744}.footer-brand p{color:#778190}.footer-links{color:#697383}.footer-links span:hover{color:var(--accent)}.copyright{color:#8d97a5}
+.subpage-card,.detail-card{background:#fff;border-color:#e4e9ef;box-shadow:0 12px 30px rgba(35,48,66,.08)}.subpage h1,.detail-card h1{color:#252b36}.subpage p,.detail-card p{color:#7a8494}.page-eyebrow{color:var(--accent)}
+/* Unified button states */
+button:focus-visible,a:focus-visible{outline:3px solid #ffc0b7;outline-offset:2px}.go-live:active{transform:translateY(1px);filter:brightness(.96)}.go-live:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}.stage-meta button{background:rgba(255,255,255,.92);border-color:#fff;color:#38404c}.stage-meta button:hover{background:#fff;color:var(--accent)}

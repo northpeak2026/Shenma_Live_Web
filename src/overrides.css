@@ -1,0 +1,13 @@
+/* Homepage revision: the five channel covers form a contiguous rail equal to player height. */
+.featured-wrap{padding-top:24px}
+.featured{grid-template-columns:minmax(0,1fr) 276px;grid-template-rows:minmax(0,1fr);column-gap:5px;padding-right:5px}
+.stage,.channel-list{min-height:0;height:100%}
+.channel-list{height:100%;padding:0;gap:5px;grid-template-rows:repeat(5,minmax(0,1fr))}
+.channel{display:block;min-height:0;padding:0;border-radius:6px;border-bottom:0;background:#171c25;box-shadow:inset 0 0 0 2px transparent}
+.channel:last-child{border-bottom:0}.channel:hover{background:#171c25;filter:brightness(1.15)}
+.channel.selected{background:#171c25;box-shadow:inset 0 0 0 3px var(--accent);position:relative;z-index:1}
+.channel img{display:block;width:100%;min-width:0;height:100%;object-fit:cover;border-radius:6px}
+
+/* Video controls stay quiet until the viewer enters the player. */
+.stage .live-pill,.stage .stage-play,.stage .stage-meta{opacity:0;pointer-events:none;transition:opacity .2s ease}
+.stage:hover .live-pill,.stage:hover .stage-play,.stage:hover .stage-meta{opacity:1;pointer-events:auto}
