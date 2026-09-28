@@ -14,6 +14,38 @@ export const hotRooms = [
   { id: 'nbatalk', title: '季后赛对阵推演，湖人还有机会吗', league: '篮球', presenterTag:'美女主播', heat: '7.4万', host: '阿伦说球', avatar: 'https://i.pravatar.cc/100?img=11', cover: 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=900&q=82', color: '#fc7b37' }
 ];
 
+export const featuredEvents = [
+  {id:'event-epl',time:'09/24 15:30',league:'英超',home:'阿森纳',away:'利物浦',homeLogo:'A',awayLogo:'L',score:'VS',color:'#e64b3d'},
+  {id:'event-nba',time:'09/24 18:30',league:'NBA',home:'洛杉矶湖人',away:'金州勇士',homeLogo:'LAL',awayLogo:'GSW',score:'VS',color:'#f29d2d'},
+  {id:'event-tennis',time:'09/24 19:00',league:'ATP 500',home:'张之臻',away:'鲁内',homeLogo:'ZZ',awayLogo:'RH',score:'VS',color:'#37a978'},
+  {id:'event-lol',time:'09/24 20:00',league:'英雄联盟 LPL',home:'BLG',away:'TES',homeLogo:'BLG',awayLogo:'TES',score:'1 - 0',color:'#8e61ec'},
+  {id:'event-cba',time:'09/24 20:30',league:'CBA',home:'广东华南虎',away:'辽宁飞豹',homeLogo:'GD',awayLogo:'LN',score:'VS',color:'#3c8df0'},
+  {id:'event-kpl',time:'09/24 21:00',league:'王者荣耀 KPL',home:'成都AG',away:'北京WB',homeLogo:'AG',awayLogo:'WB',score:'VS',color:'#ee6d94'}
+];
+
+export const liveStreams = [
+  {id:'stream-01',category:'足球',title:'英超焦点战：阿森纳冲击榜首',presenterTag:'金牌主播',heat:'5.6万',host:'阿辰解说',avatar:'https://i.pravatar.cc/100?img=12',cover:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=84',color:'#ff5a43'},
+  {id:'stream-02',category:'足球',title:'欧冠淘汰赛战术复盘与实时解说',presenterTag:'实力主播',heat:'2.3万',host:'球场边的老周',avatar:'https://i.pravatar.cc/100?img=14',cover:'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=900&q=84',color:'#3d88ed'},
+  {id:'stream-03',category:'足球',title:'西甲：皇马 vs 巴萨赛前聊天室',presenterTag:'人气主播',heat:'8,632',host:'西语小橙',avatar:'https://i.pravatar.cc/100?img=47',cover:'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=84',color:'#a168f1'},
+  {id:'stream-04',category:'足球',title:'五大联赛晚场串关数据分析',presenterTag:'美女主播',heat:'1.2万',host:'米娜看球',avatar:'https://i.pravatar.cc/100?img=45',cover:'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=900&q=84',color:'#eb6b91'},
+  {id:'stream-05',category:'篮球',title:'湖人 vs 勇士：第三节关键回合',presenterTag:'金牌主播',heat:'4.8万',host:'篮球老周',avatar:'https://i.pravatar.cc/100?img=13',cover:'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=900&q=84',color:'#f4a229'},
+  {id:'stream-06',category:'篮球',title:'NBA 早场连线：东部格局分析',presenterTag:'实力主播',heat:'1.7万',host:'小白篮球',avatar:'https://i.pravatar.cc/100?img=51',cover:'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=84',color:'#3987ef'},
+  {id:'stream-07',category:'篮球',title:'CBA 新赛季阵容与主力观察',presenterTag:'人气主播',heat:'9,824',host:'南哥体育',avatar:'https://i.pravatar.cc/100?img=48',cover:'https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=900&q=84',color:'#39a8e5'},
+  {id:'stream-08',category:'篮球',title:'掘金主场赛后更衣室点评',presenterTag:'美女主播',heat:'6,981',host:'丸子说球',avatar:'https://i.pravatar.cc/100?img=36',cover:'https://images.unsplash.com/photo-1518407613690-d9fc990e795f?auto=format&fit=crop&w=900&q=84',color:'#df6384'},
+  {id:'stream-09',category:'网球',title:'ATP 500：张之臻 vs 鲁内',presenterTag:'金牌主播',heat:'2.6万',host:'网球阿哲',avatar:'https://i.pravatar.cc/100?img=52',cover:'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=900&q=84',color:'#2ea66f'},
+  {id:'stream-10',category:'网球',title:'中国赛季晚场：中心球场直击',presenterTag:'实力主播',heat:'1.1万',host:'一拍定音',avatar:'https://i.pravatar.cc/100?img=53',cover:'https://images.unsplash.com/photo-1530915365347-e35b749a0381?auto=format&fit=crop&w=900&q=84',color:'#36a879'},
+  {id:'stream-11',category:'网球',title:'美网名场面回顾，聊聊发球战术',presenterTag:'美女主播',heat:'7,562',host:'小鹿网球',avatar:'https://i.pravatar.cc/100?img=41',cover:'https://images.unsplash.com/photo-1622279457486-28b3a8b5abf5?auto=format&fit=crop&w=900&q=84',color:'#ec7190'},
+  {id:'stream-12',category:'网球',title:'大师赛签表解读与夺冠预测',presenterTag:'人气主播',heat:'5,316',host:'ACE频道',avatar:'https://i.pravatar.cc/100?img=20',cover:'https://images.unsplash.com/photo-1617083934555-ac7f7c620b92?auto=format&fit=crop&w=900&q=84',color:'#42af80'},
+  {id:'stream-13',category:'英雄联盟',title:'LPL 夏季赛：BLG vs TES',presenterTag:'人气主播',heat:'6.9万',host:'小麦电竞',avatar:'https://i.pravatar.cc/100?img=44',cover:'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=84',color:'#a168f1'},
+  {id:'stream-14',category:'英雄联盟',title:'峡谷之巅冲分：辅助教学局',presenterTag:'金牌主播',heat:'1.9万',host:'Kirin',avatar:'https://i.pravatar.cc/100?img=60',cover:'https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=84',color:'#7d61e9'},
+  {id:'stream-15',category:'英雄联盟',title:'世界赛资格赛数据模拟',presenterTag:'实力主播',heat:'1.4万',host:'数据小周',avatar:'https://i.pravatar.cc/100?img=7',cover:'https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=900&q=84',color:'#785ce4'},
+  {id:'stream-16',category:'英雄联盟',title:'下路双排快乐局，陪你看比赛',presenterTag:'美女主播',heat:'8,375',host:'柚子酱',avatar:'https://i.pravatar.cc/100?img=40',cover:'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=84',color:'#de668c'},
+  {id:'stream-17',category:'王者荣耀',title:'KPL 焦点：成都AG vs 北京WB',presenterTag:'金牌主播',heat:'4.2万',host:'峡谷小北',avatar:'https://i.pravatar.cc/100?img=56',cover:'https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=900&q=84',color:'#f08a45'},
+  {id:'stream-18',category:'王者荣耀',title:'巅峰赛冲击前百：边路细节教学',presenterTag:'实力主播',heat:'1.6万',host:'长安夜话',avatar:'https://i.pravatar.cc/100?img=67',cover:'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=84',color:'#ef7548'},
+  {id:'stream-19',category:'王者荣耀',title:'新英雄实战测评与出装攻略',presenterTag:'美女主播',heat:'9,118',host:'糖糖的峡谷',avatar:'https://i.pravatar.cc/100?img=38',cover:'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=900&q=84',color:'#e76693'},
+  {id:'stream-20',category:'王者荣耀',title:'五排车队欢乐赛，和水友开黑',presenterTag:'人气主播',heat:'1.3万',host:'野王阿哲',avatar:'https://i.pravatar.cc/100?img=68',cover:'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=900&q=84',color:'#f0933c'}
+];
+
 const football = {
   '英超': [['Arsenal','ARS','28','20','5','3','65/26','65'],['Liverpool','LIV','28','19','6','3','64/28','63'],['Manchester City','MCI','28','18','7','3','62/31','61'],['Aston Villa','AVL','28','16','5','7','55/38','53'],['Tottenham','TOT','28','15','5','8','57/42','50'],['Manchester United','MUN','28','14','3','11','39/39','45'],['West Ham','WHU','28','12','7','9','45/49','43'],['Brighton','BHA','28','11','9','8','50/44','42'],['Wolves','WOL','28','12','5','11','42/44','41'],['Newcastle','NEW','28','12','4','12','59/48','40']],
   '西甲': [['Real Madrid','RMA','28','21','6','1','59/18','69'],['Barcelona','BAR','28','18','7','3','57/30','61'],['Girona','GIR','28','18','5','5','57/33','59'],['Atletico Madrid','ATM','28','17','4','7','54/31','55'],['Athletic Club','ATH','28','15','8','5','48/26','53'],['Real Sociedad','RSO','28','11','10','7','40/31','43'],['Real Betis','BET','28','10','12','6','36/34','42'],['Valencia','VAL','28','10','7','11','31/32','37'],['Getafe','GET','28','9','11','8','34/39','38'],['Las Palmas','LPA','28','10','7','11','29/31','37']],

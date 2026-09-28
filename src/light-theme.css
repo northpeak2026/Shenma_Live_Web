@@ -22,3 +22,5 @@ footer{background:#eef1f4;border-top-color:#e1e6eb}.footer-brand{color:#303744}.
 .subpage-card,.detail-card{background:#fff;border-color:#e4e9ef;box-shadow:0 12px 30px rgba(35,48,66,.08)}.subpage h1,.detail-card h1{color:#252b36}.subpage p,.detail-card p{color:#7a8494}.page-eyebrow{color:var(--accent)}
 /* Unified button states */
 button:focus-visible,a:focus-visible{outline:3px solid #ffc0b7;outline-offset:2px}.go-live:active{transform:translateY(1px);filter:brightness(.96)}.go-live:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}.stage-meta button{background:rgba(255,255,255,.92);border-color:#fff;color:#38404c}.stage-meta button:hover{background:#fff;color:var(--accent)}
+
+.table-head .team-column-head{text-align:center;padding-left:0}
