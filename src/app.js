@@ -1,4 +1,4 @@
-import { liveRooms, hotRooms, featuredEvents, liveStreams, standings, initials } from './data.js';
+import { liveRooms, hotRooms, featuredEvents, liveStreams, standings, initials } from './data.js?v=20260928-2';
 
 const app = document.querySelector('#app');
 const navs = [['首页','#/'],['直播','#/live'],['预告','#/schedule'],['赛事','#/matches'],['聊天','#/chat']];
