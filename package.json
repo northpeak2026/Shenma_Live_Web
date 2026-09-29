@@ -6,9 +6,10 @@
   "packageManager": "pnpm@11.19.0",
   "description": "SMLive PC Web sports live platform prototype",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "dev": "sh scripts/vite-local.sh",
+    "build": "sh scripts/vite-local.sh build",
+    "preview": "sh scripts/vite-local.sh preview",
+    "preview:ensure": "sh scripts/ensure-preview.sh"
   },
   "devDependencies": {
     "vite": "8.3.0"
