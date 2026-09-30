@@ -29,7 +29,8 @@ This repository is one complete Web application. Home, Live, Preview, Matches, C
 - Preview: <http://127.0.0.1:4173/#/schedule>
 - Matches: <http://127.0.0.1:4173/#/matches>
 - Chat: <http://127.0.0.1:4173/#/chat>
-- App download: <http://127.0.0.1:4173/download>
+- App download (local): <http://127.0.0.1:4173/download>
+- App download (GitHub Pages): <https://northpeak2026.github.io/Shenma_Live_Web/#/download>
 - Search example: <http://127.0.0.1:4173/#/search?keyword=NBA>
 
 The project currently uses hash routing, so page links must remain under the same `127.0.0.1:4173` origin.

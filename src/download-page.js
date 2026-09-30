@@ -120,5 +120,5 @@ export function bindDownloadPage() {
     });
   });
   bindPlatformButtons();
-  if (location.hash === "#install-guide") requestAnimationFrame(() => document.querySelector("#install-guide")?.scrollIntoView({ behavior: "smooth" }));
+  if (location.hash.endsWith("#install-guide")) requestAnimationFrame(() => document.querySelector("#install-guide")?.scrollIntoView({ behavior: "smooth" }));
 }
