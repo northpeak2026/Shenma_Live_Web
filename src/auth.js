@@ -64,7 +64,7 @@ export function authHeaderArea() {
           <img src="${currentUser.avatar}" alt="">
           <span><b>${escapeHTML(currentUser.nickname)}</b><small>ID：${escapeHTML(currentUser.userId)}</small></span>
         </div>
-        <a href="#/profile/${currentUser.id}" role="menuitem"><span>个人中心</span><b>›</b></a>
+        <a href="/#/profile/${currentUser.id}" role="menuitem"><span>个人中心</span><b>›</b></a>
         <button type="button" data-auth-logout role="menuitem"><span>退出登录</span><b>↗</b></button>
       </section>
     </div>`;
