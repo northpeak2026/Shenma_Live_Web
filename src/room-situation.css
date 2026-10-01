@@ -1,0 +1,37 @@
+.room-situation{flex:1;min-height:0;min-width:0;width:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;box-sizing:border-box;padding:6px 12px 12px;container-type:inline-size}
+.room-situation *{box-sizing:border-box;min-width:0}
+.room-situation .football-situation,.room-situation .basketball-situation{width:100%;padding:0}
+.room-situation .football-momentum{padding-left:30px}
+.room-situation .momentum-team-logos,.room-situation .momentum-team-logo{width:26px}
+.room-situation .momentum-team-logo .match-team-logo{width:24px;height:24px;flex-basis:24px;font-size:8px}
+.room-situation .football-momentum svg,.room-situation .basket-difference-chart{display:block;width:100%;height:auto;max-height:none}
+.room-situation .situation-tabs button{background:transparent}
+.room-situation .basket-situation-module{margin-bottom:14px}
+.room-situation .basket-situation-module h3{margin-bottom:6px}
+.room-situation .momentum-tick,.room-situation .basket-difference-chart text{font-size:24px}
+.room-situation .momentum-tick{dominant-baseline:hanging}
+.room-situation .football-summary-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 6px}
+.room-situation .football-summary-item>span{font-size:11px;white-space:normal;text-align:center}
+.room-situation .football-summary-item b{font-size:11px}
+.room-situation .football-key-row{grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr)}
+.room-situation .football-key-card{padding:6px 2px;gap:3px}
+.room-situation .football-key-card b,.room-situation .timeline-team-head b{white-space:normal;overflow:visible;font-size:11px;overflow-wrap:anywhere}
+.room-situation .football-text-live .football-text-row{grid-template-columns:24px 38px minmax(0,1fr) 36px;gap:4px}
+.room-situation .football-text-live .football-text-copy{grid-column:3;white-space:normal;overflow:visible;overflow-wrap:anywhere;font-size:11px}
+.room-situation .football-text-live .event-side-tag{grid-column:4;min-width:30px;padding:0 3px}
+.room-situation .football-goal-score{display:flex;flex-wrap:wrap}
+.room-situation .basket-current-grid{grid-template-columns:1fr 1fr;gap:10px;width:100%;overflow:visible}
+.room-situation .basket-current-core{grid-column:1/-1;grid-row:2}
+.room-situation .basket-current-team-heading b{white-space:normal;overflow:visible;overflow-wrap:anywhere;font-size:11px}
+.room-situation .basket-current-aux{gap:4px}.room-situation .basket-current-aux span{font-size:11px}
+.room-situation .detail-stat-row>div{grid-template-columns:1fr 100px 1fr}
+.room-situation .basketball-period-tabs{flex-wrap:wrap!important;white-space:normal;overflow:visible!important;gap:5px}
+.room-situation .basketball-period-tabs button{min-width:56px!important;padding:5px 8px;font-size:11px}
+.room-situation .basketball-live-row{grid-template-columns:40px 66px minmax(0,1fr) 34px;gap:4px;padding:7px 5px}
+.room-situation .basketball-event-score{width:66px;font-size:11px}
+.room-situation .basketball-event-copy{white-space:normal;overflow:visible;overflow-wrap:anywhere;font-size:11px}
+.room-situation .event-side-tag{min-width:30px;padding:0 3px;font-size:10px}
+.basket-period-compact>div{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:6px;padding:8px;border-bottom:1px solid #edf0f3;font-size:12px;color:#647180;text-align:center}
+.basket-period-compact>div span:first-child{text-align:left}.basket-period-heading{background:#f7f9fb}.basket-period-compact .current{background:#fff5f2;color:var(--accent)}
+.room-side-tabs button:hover{color:var(--accent)}
+@container(max-width:275px){.room-situation .football-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

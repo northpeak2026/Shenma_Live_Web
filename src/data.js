@@ -6,6 +6,9 @@ export const liveRooms = [
   { id: 'cba', title: '广东宏远 vs 辽宁本钢', league: 'CBA', time: '第四节 05:20', heat: '11.9万', presenterTag:'实力主播', host: '南哥体育', avatar: 'https://i.pravatar.cc/100?img=47', cover: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=88', score: '98  -  101', clock: 'Q4', color: '#46b8ff' }
 ];
 
+// Explicit fixture bindings; talk/teaching streams without a fixture remain unbound.
+liveRooms.forEach(room=>{room.matchId={'premier-ars':'live-ars','nba-lal':'live-nba',ucl:'up-ucl',laliga:'live-laliga',cba:'live-cba'}[room.id]});
+
 export const hotRooms = [
   ...liveRooms.slice(0, 4),
   { id: 'epl-talk', title: '英超争四关键战，赛前阵容解析', league: '足球', presenterTag:'金牌主播', heat: '9.6万', host: '大熊侃球', avatar: 'https://i.pravatar.cc/100?img=5', cover: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=82', color: '#2bb894' },
@@ -76,5 +79,7 @@ const football = {
 const nbaEast = [['Boston Celtics','BOS','56','16','.778','—','7-3'],['New York Knicks','NYK','47','29','.618','11.5','6-4'],['Milwaukee Bucks','MIL','46','30','.605','12.5','7-3'],['Cleveland Cavaliers','CLE','45','31','.592','13.5','5-5'],['Orlando Magic','ORL','43','33','.566','15.5','6-4'],['Indiana Pacers','IND','42','34','.553','16.5','7-3'],['Philadelphia 76ers','PHI','40','36','.526','18.5','4-6'],['Miami Heat','MIA','39','37','.513','19.5','6-4'],['Chicago Bulls','CHI','37','39','.487','21.5','5-5'],['Atlanta Hawks','ATL','35','41','.461','23.5','4-6']];
 const nbaWest = [['Denver Nuggets','DEN','55','21','.724','—','8-2'],['Minnesota Timberwolves','MIN','54','22','.711','1.0','7-3'],['Oklahoma City Thunder','OKC','53','23','.697','2.0','6-4'],['LA Clippers','LAC','49','27','.645','6.0','7-3'],['Los Angeles Lakers','LAL','45','31','.592','10.0','7-3'],['Phoenix Suns','PHX','44','32','.579','11.0','5-5'],['New Orleans Pelicans','NOP','43','33','.566','12.0','6-4'],['Sacramento Kings','SAC','42','34','.553','13.0','5-5'],['Golden State Warriors','GSW','41','35','.539','14.0','8-2'],['Houston Rockets','HOU','39','37','.513','16.0','7-3']];
 const cba = [['Liaoning Flying Leopards','LIA','41','7','.854','—','8-2'],['Xinjiang Flying Tigers','XIN','40','8','.833','1.0','9-1'],['Zhejiang Golden Bulls','ZHE','38','10','.792','3.0','7-3'],['Guangdong Southern Tigers','GUA','37','11','.771','4.0','8-2'],['Guangsha Lions','GUS','35','13','.729','6.0','6-4'],['Shenzhen Aviators','SZE','32','16','.667','9.0','5-5'],['Beijing Ducks','BEI','31','17','.646','10.0','7-3'],['Qingdao Eagles','QIN','30','18','.625','11.0','6-4'],['Shanghai Sharks','SHA','28','20','.583','13.0','4-6'],['Shanxi Loongs','SHX','27','21','.563','14.0','5-5']];
+const streamMatchBindings={'stream-01':'live-ars','stream-02':'up-ucl','stream-05':'live-nba','stream-07':'live-cba','stream-08':'result-nba','stream-09':'event-tennis','stream-13':'event-lol','stream-17':'event-kpl',lpl:'event-lol'};
+[...hotRooms,...liveStreams].forEach(room=>{if(streamMatchBindings[room.id])room.matchId=streamMatchBindings[room.id]});
 export const standings = { football, basketball: { NBA: { east: nbaEast, west: nbaWest }, CBA: { all: cba } } };
 export const initials = (name) => name.split(' ').map(s => s[0]).slice(0, 3).join('');
