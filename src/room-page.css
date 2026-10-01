@@ -10,4 +10,5 @@
 .stage-meta a{margin-left:auto;background:rgba(255,255,255,.92);border:1px solid #fff;border-radius:7px;color:#38404c;padding:8px 12px;font-size:12px}.stage-meta a:hover{background:#fff;color:var(--accent)}
 
 /* Eight compact gift covers fit before the asset area; pagination hugs the final cover. */
+.room-page:not(.match-detail-page) .chat-content>.entry-toast{text-align:left;padding:0 15px}
 .gift-list{flex:0 0 auto;gap:8px}.gift-carousel{gap:7px}.gift-carousel .gift-page-btn:last-child{margin-left:0}
