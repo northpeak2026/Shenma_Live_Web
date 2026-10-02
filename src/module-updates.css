@@ -22,3 +22,8 @@
 .content-section.hot,.content-section.standings{padding-top:26px}
 .data-ranking .rank-table{padding-top:10px}
 .data-ranking .rank-controls-only{justify-content:flex-end}
+
+.home-popular-matches{padding-top:26px}
+.home-popular-matches .matches-panel{margin:0}
+.home-match-list{margin-top:14px}
+.home-popular-matches .match-empty{min-height:160px}
