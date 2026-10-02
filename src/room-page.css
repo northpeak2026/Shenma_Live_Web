@@ -11,4 +11,6 @@
 
 /* Eight compact gift covers fit before the asset area; pagination hugs the final cover. */
 .room-page:not(.match-detail-page) .chat-content>.entry-toast{text-align:left;padding:0 15px}
+.player-controls button[data-player="danmaku"].is-off{position:relative}
+.player-controls button[data-player="danmaku"].is-off::after{content:'';position:absolute;left:5px;top:50%;width:calc(100% - 10px);height:1px;background:currentColor;transform:rotate(35deg);transform-origin:center;pointer-events:none}
 .gift-list{flex:0 0 auto;gap:8px}.gift-carousel{gap:7px}.gift-carousel .gift-page-btn:last-child{margin-left:0}

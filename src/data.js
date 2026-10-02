@@ -18,16 +18,21 @@ export const hotRooms = [
 ];
 
 export const featuredEvents = [
-  {id:'event-epl',time:'09/24 15:30',league:'英超',home:'阿森纳',away:'利物浦',homeLogo:'A',awayLogo:'L',score:'VS',color:'#e64b3d'},
-  {id:'event-nba',time:'09/24 18:30',league:'NBA',home:'洛杉矶湖人',away:'金州勇士',homeLogo:'LAL',awayLogo:'GSW',score:'VS',color:'#f29d2d'},
-  {id:'event-tennis',time:'09/24 19:00',league:'ATP 500',home:'张之臻',away:'鲁内',homeLogo:'ZZ',awayLogo:'RH',score:'VS',color:'#37a978'},
-  {id:'event-lol',time:'09/24 20:00',league:'英雄联盟 LPL',home:'BLG',away:'TES',homeLogo:'BLG',awayLogo:'TES',score:'1 - 0',color:'#8e61ec'},
-  {id:'event-cba',time:'09/24 20:30',league:'CBA',home:'广东华南虎',away:'辽宁飞豹',homeLogo:'GD',awayLogo:'LN',score:'VS',color:'#3c8df0'},
-  {id:'event-kpl',time:'09/24 21:00',league:'王者荣耀 KPL',home:'成都AG',away:'北京WB',homeLogo:'AG',awayLogo:'WB',score:'VS',color:'#ee6d94'}
+  {id:'event-epl',hosts:[12, 14, 32, 5, 45],time:'09/24 15:30',league:'英超',home:'阿森纳',away:'利物浦',homeLogo:'A',awayLogo:'L',score:'VS',color:'#e64b3d'},
+  {id:'event-nba',hosts:[13, 51, 36, 20, 5],time:'09/24 18:30',league:'NBA',home:'洛杉矶湖人',away:'金州勇士',homeLogo:'LAL',awayLogo:'GSW',score:'VS',color:'#f29d2d'},
+  {id:'event-tennis',hosts:[52, 53],time:'09/24 19:00',league:'ATP 500',home:'张之臻',away:'鲁内',homeLogo:'ZZ',awayLogo:'RH',score:'VS',color:'#37a978'},
+  {id:'event-lol',hosts:[44, 60, 7, 40],time:'09/24 20:00',league:'英雄联盟 LPL',home:'BLG',away:'TES',homeLogo:'BLG',awayLogo:'TES',score:'1 - 0',color:'#8e61ec'},
+  {id:'event-cba',hosts:[48, 47, 13],time:'09/24 20:30',league:'CBA',home:'广东华南虎',away:'辽宁飞豹',homeLogo:'GD',awayLogo:'LN',score:'VS',color:'#3c8df0'},
+  {id:'event-kpl',hosts:[56, 57, 5],time:'09/24 21:00',league:'王者荣耀 KPL',home:'成都AG',away:'北京WB',homeLogo:'AG',awayLogo:'WB',score:'VS',color:'#ee6d94'}
 ];
 
 
 export const scheduleEvents = [
+{id:'epl-finished',date:'today',sport:'football',league:'英超',time:'15:00',status:'finished',home:'曼彻斯特城',away:'切尔西',homeLogo:'MCI',awayLogo:'CHE',score:'3 : 1',color:'#4994c7',hosts:[12,14]},
+{id:'nba-finished',date:'today',sport:'basketball',league:'NBA',time:'10:00',status:'finished',home:'丹佛掘金',away:'菲尼克斯太阳',homeLogo:'DEN',awayLogo:'PHX',score:'108 : 101',color:'#d98632',hosts:[13,36]},
+{id:'tennis-finished',date:'today',sport:'other',league:'中网',time:'13:00',status:'finished',home:'郑钦文',away:'高芙',homeLogo:'ZQW',awayLogo:'CG',score:'2 : 1',color:'#41a47d',hosts:[53,41]},
+{id:'cba-upcoming',date:'today',sport:'basketball',league:'CBA',time:'22:00',status:'upcoming',home:'北京北汽',away:'上海久事',homeLogo:'BEI',awayLogo:'SHA',color:'#367fc4',hosts:[48,47]},
+{id:'other-upcoming',date:'today',sport:'other',league:'英雄联盟 LPL',time:'22:30',status:'upcoming',home:'BLG',away:'TES',homeLogo:'BLG',awayLogo:'TES',color:'#8e61ec',hosts:[44,60]},
 {id:'epl-live',date:'today',sport:'football',league:'英超',time:'19:30',status:'live',stage:"下半场 72'",home:'阿森纳',away:'利物浦',homeLogo:'ARS',awayLogo:'LIV',score:'2 : 1',color:'#df5147',roomId:'premier-ars',hosts:[12,14,32]},
 {id:'laliga-live',date:'today',sport:'football',league:'西甲',time:'20:00',status:'live',stage:"上半场 30'",home:'巴塞罗那',away:'马德里竞技',homeLogo:'BAR',awayLogo:'ATM',score:'1 : 0',color:'#5d79d8',roomId:'laliga',hosts:[15]},
 {id:'seriea',date:'today',sport:'football',league:'意甲',time:'22:15',status:'upcoming',home:'AC米兰',away:'国际米兰',homeLogo:'MIL',awayLogo:'INT',color:'#8c65bf',hosts:[33,47]},

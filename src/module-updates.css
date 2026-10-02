@@ -1,0 +1,24 @@
+.data-page{padding:34px 0 76px;min-height:calc(100vh - 250px)}
+.data-ranking .rank-card{width:100%}
+.data-ranking .rank-row{min-height:54px}
+.data-sport-tabs{margin-bottom:20px}
+.preview-view-all{color:var(--accent)!important;font-size:13px!important}
+.event-card{grid-template-rows:auto 1fr auto;min-height:161px}
+.event-anchor-foot{display:flex;align-items:center;gap:12px;border-top:1px solid #eef1f4;padding-top:10px}
+.event-anchor-foot>small{color:#8b95a2;font-size:11px}
+.anchor-avatar-group{display:flex;align-items:center;padding:3px;margin-left:6px}
+.anchor-avatar{position:relative;display:block;flex:0 0 28px;width:28px;height:28px;margin-left:-6px;border-radius:50%;background:#fff}
+.anchor-avatar img{position:relative;z-index:1;width:100%;height:100%;border:2px solid #fff;border-radius:50%;object-fit:cover}
+.anchor-avatar.is-live:before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(#ff523d,#ffbb56,#ff523d);animation:liveAvatarRing 2.6s linear infinite}
+.anchor-avatar.is-live:after{content:'';position:absolute;inset:-4px;border:1px solid #ff6b5366;border-radius:50%;animation:liveAvatarPulse 2s ease-out infinite}
+.anchor-overflow{position:relative;z-index:2;display:grid;place-items:center;width:28px;height:28px;border:2px solid #fff;border-radius:50%;margin-left:-4px;background:#f1f4f8;color:#798595;font-size:10px;font-weight:600}
+.schedule-card.finished{cursor:default;background:#fafbfc;box-shadow:none}
+.schedule-card.finished:hover{transform:none;border-color:#e5eaf0;box-shadow:none}
+.schedule-status.is-finished{background:#edf0f3;color:#788492}
+.header-inner{gap:24px}.main-nav{gap:21px}
+@media(max-width:1280px){.header-inner{gap:18px}.main-nav{gap:17px}.search{width:185px}}
+@media(prefers-reduced-motion:reduce){.anchor-avatar.is-live:before,.anchor-avatar.is-live:after{animation:none}}
+
+.content-section.hot,.content-section.standings{padding-top:26px}
+.data-ranking .rank-table{padding-top:10px}
+.data-ranking .rank-controls-only{justify-content:flex-end}

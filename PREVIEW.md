@@ -28,6 +28,7 @@ This repository is one complete Web application. Home, Live, Preview, Matches, C
 - Live: <http://127.0.0.1:4173/#/live>
 - Preview: <http://127.0.0.1:4173/#/schedule>
 - Matches: <http://127.0.0.1:4173/#/matches>
+- Data: <http://127.0.0.1:4173/data> (GitHub Pages uses `#/data`)
 - Chat: <http://127.0.0.1:4173/#/chat>
 - App download (local): <http://127.0.0.1:4173/download>
 - App download (GitHub Pages): <https://northpeak2026.github.io/Shenma_Live_Web/#/download>
