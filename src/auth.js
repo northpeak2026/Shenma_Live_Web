@@ -70,11 +70,12 @@ export function authHeaderArea() {
     </div>`;
   }
 
+  const benefitIcon = paths => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
   const benefits = [
-    ["▻", "免费观看高清赛事视频"],
-    ["◉", "热门直播看不停"],
-    ["✦", "发弹幕 / 评论和大家互动"],
-    ["↻", "多端同步播放记录"],
+    [benefitIcon('<rect x="3" y="4" width="18" height="15" rx="3"/><path d="m10 8 6 4-6 4Z"/>'), "蓝光10M超清画质畅快看"],
+    [benefitIcon('<path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-5 3v-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M7 9h10M7 13h7"/>'), "美女陪你看球，弹幕礼物互动"],
+    [benefitIcon('<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-13 5 3 3 5-5"/>'), "五大联赛/NBA赛事随心订阅"],
+    [benefitIcon('<rect x="2" y="4" width="14" height="11" rx="2"/><path d="M5 20h8m-4-5v5"/><rect x="17" y="9" width="5" height="12" rx="1"/>'), "多端同步观看，播放记录不丢"],
   ];
   return `<div class="auth-entry is-guest">
     <button class="avatar-btn auth-avatar-btn guest-avatar" type="button" aria-label="登录或注册" aria-haspopup="dialog">${guestAvatar()}</button>
