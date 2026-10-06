@@ -2,6 +2,18 @@
 
 These instructions apply to every Codex task in this repository.
 
+## Mock 数据规范
+
+- 页面中使用的 Mock 数据直接展示即可，无需额外添加“模拟数据”“仅供演示”“Mock 数据”等解释性文案。
+- 此规范适用于所有现有及未来功能模块，后续功能开发及页面调整默认遵循。
+
+## 中文文案规范
+
+- 本项目为纯中文网站，所有面向用户的页面文案统一使用简体中文。
+- 标题、副标题、按钮、标签、提示语等尽量避免英文修饰性文案。
+- 品牌名称、技术术语及行业通用缩写（如 NBA、VIP、App）可以保留英文。
+- 此规范适用于所有现有及未来功能模块，后续功能开发及页面调整默认遵循。
+
 ## Canonical workspace
 
 - The only canonical project and Git root is `/Users/apple/Documents/ChatGPT/Shenma_Live_Web`.

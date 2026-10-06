@@ -61,3 +61,8 @@ The personal center provides three Mock identity scenarios: ordinary / not appli
 - The final response includes the canonical preview URL and, when helpful, a route-specific URL on the same origin.
 
 The creator workbench uses the existing VIP 5 Mock user. Its Mock live-state selector resets the sample live setup and plans for testing; normal starts, cancellations, and saved changes persist locally. Push credentials are demonstration values.
+
+- Game center / treasure wheel: <http://127.0.0.1:4173/#/game>
+- Task center: <http://127.0.0.1:4173/#/profile/mock-user?tab=tasks>
+
+The treasure game starts with 10 Mock chances, persists remaining chances and history in localStorage, and automatically adds +3 free chances on that prize. Mock prize amounts and weights live in `src/game-state.js`; no wallet or gift inventory is changed.
