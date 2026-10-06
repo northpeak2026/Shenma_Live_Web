@@ -2,7 +2,8 @@ const AUTH_STORAGE_KEY = "shenma-live-web-auth";
 
 const MOCK_USER = {
   id: "mock-user",
-  nickname: "神马球迷 8842",
+  nickname: "神马球迷",
+  vip: 3, exp: 2350, nextExp: 5000, diamonds: 1280, coins: 8650, isCreator: false, creatorApplicationStatus: "not_applied", applicationEditCount: 0,
   userId: "SM884208",
   avatar: "https://i.pravatar.cc/160?img=49",
 };
@@ -15,10 +16,12 @@ const initialForm = () => ({
   confirmPassword: "",
 });
 
+const normalizeUser = user => ({...user, isCreator: user.creatorApplicationStatus === "approved"});
+
 const readStoredUser = () => {
   try {
     const stored = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY) || "null");
-    return stored?.id ? stored : null;
+    return stored?.id ? normalizeUser({ ...MOCK_USER, ...stored, creatorApplicationStatus: stored.creatorApplicationStatus || (stored.isCreator ? "approved" : "not_applied") }) : null;
   } catch {
     return null;
   }
@@ -49,10 +52,23 @@ const eyeIcon = (visible) => visible
   : `<svg class="auth-eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 8.8C2.7 9.5 2.5 10 2.5 10s3.5 6 9.5 6c1.3 0 2.5-.3 3.5-.7"></path><path d="M20.8 13.2c.5-.7.7-1.2.7-1.2S18 6 12 6c-1.3 0-2.5.3-3.5.7"></path><path d="M4 4l16 16"></path></svg>`;
 
 export const getAuthUser = () => currentUser;
+export function updateAuthUser(patch) {
+  if (!currentUser) return;
+  const nextUser = normalizeUser({...currentUser, ...patch});
+  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(nextUser));
+  currentUser = nextUser;
+}
+export function switchMockUser(identity) {
+  sessionStorage.removeItem("shenma-application-draft-mock-user");
+  const isCreator = identity === true || identity === "creator";
+  const reviewing = identity === "reviewing";
+  currentUser = {...MOCK_USER, phone: '13800138842', creatorApplicationStatus: isCreator?'approved':reviewing?'reviewing':'not_applied', applicationSubmittedAt: reviewing?'2026-10-06 14:20':null, ...(isCreator ? {nickname:'阿辰解说', vip:5, exp:7200, nextExp:12000, diamonds:5860, coins:26800, isCreator:true} : {})};
+  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(currentUser));
+}
 
 const guestAvatar = () => `<span class="guest-avatar-figure" aria-hidden="true"><i></i><b></b></span>`;
 
-export function authHeaderArea() {
+export function authHeaderArea(link = hash => hash) {
   if (currentUser) {
     return `<div class="auth-entry is-logged-in">
       <button class="avatar-btn auth-avatar-btn" type="button" aria-label="打开用户菜单" aria-haspopup="menu">
@@ -62,9 +78,13 @@ export function authHeaderArea() {
       <section class="auth-popover auth-user-menu" role="menu" aria-label="用户菜单">
         <div class="auth-user-summary">
           <img src="${currentUser.avatar}" alt="">
-          <span><b>${escapeHTML(currentUser.nickname)}</b><small>ID：${escapeHTML(currentUser.userId)}</small></span>
+          <span><b>${escapeHTML(currentUser.nickname)}</b><small>ID：${escapeHTML(currentUser.userId)} · VIP ${currentUser.vip}</small></span>
         </div>
-        <a href="/#/profile/${currentUser.id}" role="menuitem"><span>个人中心</span><b>›</b></a>
+        <div class="account-vip"><b>VIP ${currentUser.vip}</b><span>${currentUser.exp.toLocaleString()} / ${currentUser.nextExp.toLocaleString()} 经验值</span><progress value="${currentUser.exp}" max="${currentUser.nextExp}" aria-label="VIP 升级进度"></progress></div>
+        <div class="account-menu-assets"><span>💎 ${currentUser.diamonds.toLocaleString()}</span><span>🪙 ${currentUser.coins.toLocaleString()}</span></div>
+        <a href="${link('#/profile/mock-user')}" role="menuitem"><span>个人中心</span><b>›</b></a>
+        <a href="${link('#/profile/mock-user?tab=following')}" role="menuitem"><span>我的关注</span><b>›</b></a>
+        <a href="${link(currentUser.isCreator?'#/creator':'#/profile/mock-user?tab=creator')}" role="menuitem"><span>${currentUser.isCreator?'主播工作台':currentUser.creatorApplicationStatus==='reviewing'?'主播申请':'申请成为主播'}</span><b>›</b></a>
         <button type="button" data-auth-logout role="menuitem"><span>退出登录</span><b>↗</b></button>
       </section>
     </div>`;
@@ -344,7 +364,7 @@ export function bindAuth(rerender) {
   document.querySelector("[data-auth-logout]")?.addEventListener("click", () => {
     currentUser = null;
     localStorage.removeItem(AUTH_STORAGE_KEY);
-    if (location.hash === "#/profile/mock-user") location.hash = "#/";
+    if (location.hash.startsWith("#/profile/mock-user") || location.hash.startsWith("#/creator")) location.hash = "#/";
     else rerender();
   });
   bindModal(rerender);

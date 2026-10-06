@@ -38,6 +38,20 @@ This repository is one complete Web application. Home, Live, Preview, Matches, C
 
 The project currently uses hash routing, so page links must remain under the same `127.0.0.1:4173` origin.
 
+- Personal center: <http://127.0.0.1:4173/#/profile/mock-user>
+- Following: <http://127.0.0.1:4173/#/profile/mock-user?tab=following>
+- Creator application: <http://127.0.0.1:4173/#/profile/mock-user?tab=creator>
+- Creator workbench (Mock): <http://127.0.0.1:4173/#/creator>
+- Creator schedules: <http://127.0.0.1:4173/#/creator?module=schedule>
+- Creator analytics: <http://127.0.0.1:4173/#/creator?module=analytics>
+- Creator history: <http://127.0.0.1:4173/#/creator?module=history>
+
+The personal center provides three Mock identity scenarios: ordinary / not applied, ordinary / reviewing, and creator / approved. Selecting a scenario restores its initial test assets, tasks, and application state. Creator identity follows the approved application status. Application status, submission time, and modification count persist with the existing user. Submitted fields and compressed document photo previews are kept in sessionStorage to repopulate the review edit form. Each confirmed modification consumes one of three opportunities; cancelling or returning without submitting does not consume one. After three modifications, the edit entry is hidden. The demonstration verification code is 123456 with a 60-second resend countdown.
+
+- Anchor home (live): <http://127.0.0.1:4173/#/anchor/achen>
+- Anchor home (offline): <http://127.0.0.1:4173/#/anchor/xiaoyu>
+- Anchor home (empty schedule/replays): <http://127.0.0.1:4173/#/anchor/qingning>
+
 ## Completion checklist
 
 - Code changes exist in the canonical root.
@@ -45,3 +59,5 @@ The project currently uses hash routing, so page links must remain under the sam
 - Only the canonical server uses port 4173.
 - The main preview URL is reachable.
 - The final response includes the canonical preview URL and, when helpful, a route-specific URL on the same origin.
+
+The creator workbench uses the existing VIP 5 Mock user. Its Mock live-state selector resets the sample live setup and plans for testing; normal starts, cancellations, and saved changes persist locally. Push credentials are demonstration values.
