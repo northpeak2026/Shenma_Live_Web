@@ -8,7 +8,7 @@ export const prizes = [
   {id:'free',name:'免费抽奖次数',quantity:3,icon:'🎟️',weight:8},
   {id:'none',name:'谢谢惠顾',quantity:0,icon:'🍀',weight:15},
 ];
-export const gameTypes = [{id:'treasure',name:'夺宝游戏',icon:'🎡',available:true},{id:'monopoly',name:'大富翁',icon:'🎲'},{id:'dice',name:'骰子',icon:'⚄'},{id:'guess',name:'猜大小',icon:'🃏'}];
+export const gameTypes = [{id:'treasure',name:'幸运大转盘',icon:'🎡',available:true},{id:'monopoly',name:'大富翁',icon:'🎲'},{id:'dice',name:'骰子',icon:'⚄'},{id:'guess',name:'猜大小',icon:'🃏'}];
 const key='shenma-game-treasure-v1';
 export function loadGame(){try{const s=JSON.parse(localStorage.getItem(key));if(Number.isInteger(s?.chances)&&s.chances>=0&&Array.isArray(s.records))return {...s,records:s.records.filter(r=>prizes.some(p=>p.id===r.prizeId)&&Number.isFinite(r.time))};}catch{}return {chances:10,records:[],pending:null};}
 export function selectPrize(random=Math.random){const total=prizes.reduce((s,p)=>s+p.weight,0);let n=random()*total;return prizes.find(p=>(n-=p.weight)<0)||prizes.at(-1);}

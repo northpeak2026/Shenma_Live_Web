@@ -70,8 +70,12 @@
 .account-intro{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#87919e;margin:0 0 25px}
 .account-intro span{font-size:12px}
 .account-host-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.account-host{text-align:center;border:1px solid #e9edf1;background:#fff;border-radius:12px;padding:25px 12px 18px;transition:transform .2s,box-shadow .2s;color:#29313d}
-.account-host:hover{transform:translateY(-3px);box-shadow:0 8px 20px #29313d0b;border-color:#ffd4cb}
+.account-host-shell{display:flex;flex-direction:column;text-align:center;border:1px solid #e9edf1;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.account-host{position:relative;display:block;flex:1;padding:48px 12px 18px;color:#29313d}
+.account-host-live-entry{display:block;margin:0 18px 18px;padding:10px 12px;border-radius:8px;background:#fff1ed;color:#ff6a52;font-size:12px;font-weight:600}
+.account-host-live-entry:hover{background:#ffe6de}
+.account-host-live-entry:focus-visible{outline:2px solid #ff6a52;outline-offset:2px}
+.account-host-shell:hover{transform:translateY(-3px);box-shadow:0 8px 20px #29313d0b;border-color:#ffd4cb}
 .account-host-avatar{position:relative;display:inline-block}
 .account-host img{width:66px;height:66px;border-radius:50%;object-fit:cover}
 .account-live{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);font-size:10px;white-space:nowrap;background:#fff0ed;color:#f25342;border:2px solid #fff;padding:3px 8px;border-radius:12px;display:flex;align-items:center;gap:4px}
