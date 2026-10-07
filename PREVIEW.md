@@ -66,3 +66,5 @@ The creator workbench uses the existing VIP 5 Mock user. Its Mock live-state sel
 - Task center: <http://127.0.0.1:4173/#/profile/mock-user?tab=tasks>
 
 The treasure game starts with 10 Mock chances, persists remaining chances and history in localStorage, and automatically adds +3 free chances on that prize. Mock prize amounts and weights live in `src/game-state.js`; no wallet or gift inventory is changed.
+
+- 邀请好友：<http://127.0.0.1:4173/#/profile/mock-user?tab=invite>。点击成功邀请人数旁箭头可滚动至邀请记录；每条成功记录固定奖励88钻石。
