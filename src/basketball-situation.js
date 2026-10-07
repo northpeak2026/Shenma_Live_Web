@@ -7,7 +7,7 @@ export function basketballMatchData(match) {
   const period = match.status === 'upcoming' ? 0 : match.status === 'finished' ? match.completedPeriod || 4 + (seed % 6 === 0 ? 2 : seed % 3 === 0 ? 1 : 0) : overtime ? 4 + Number(overtime[1] || overtime[2] || 1) : stage.includes('加时') ? 5 : stage.includes('第四') ? 4 : stage.includes('第三') ? 3 : /第二|半场|中场/.test(stage) ? 2 : 1;
   const clock = stage.match(/(\d{1,2}):(\d{2})/);
   const remaining = match.status === 'finished' || /半场|中场/.test(stage) ? 0 : clock ? Number(clock[1]) * 60 + Number(clock[2]) : period > 4 ? 180 : 360;
-  const events = [], quarters = [], rosters = ['home', 'away'].map(side => Array.from({length: 8}, (_, i) => ({name: `${side === 'home' ? match.home : match.away} · 球员${i + 1}`, number: [23,3,15,1,28,7,2,20][i], points:0, rebounds:0, assists:0, made:0, attempted:0, three:0, two:0, free:0, freeAttempts:0})));
+  const events = [], quarters = [], rosters = ['home', 'away'].map(side => Array.from({length: 8}, (_, i) => ({name: `球员${i + 1}`, number: [23,3,15,1,28,7,2,20][i], points:0, rebounds:0, assists:0, made:0, attempted:0, three:0, two:0, free:0, freeAttempts:0})));
   let homeScore = 0, awayScore = 0;
   const push = (quarter, seconds, side, type, description, points = 0, playerIndex = 0) => {
     if (side === 'home') homeScore += points;
