@@ -68,3 +68,5 @@ The creator workbench uses the existing VIP 5 Mock user. Its Mock live-state sel
 幸运大转盘支持转盘次数、钻石、金币三种消耗方式。默认单次消耗分别为 1 次、10 钻石、100 金币，配置与初始余额位于 `src/game-state.js`。余额与历史记录保存在原有 localStorage 中，旧记录自动兼容；免费次数奖励仍自动增加 3 次。钻石与金币为游戏模块的本地余额，不对接钱包或礼物背包。
 
 - 邀请好友：<http://127.0.0.1:4173/#/profile/mock-user?tab=invite>。点击成功邀请人数旁箭头可滚动至邀请记录；每条成功记录固定奖励88钻石。
+
+- 每日签到：<http://127.0.0.1:4173/#/profile/mock-user?tab=checkin>。签到状态支持今日未签到、今日已签到、第7天待签到、本周期已完成；每日一次，次日自动切换周期。

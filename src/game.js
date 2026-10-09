@@ -1,6 +1,7 @@
 import {prizes,gameTypes,loadGame,drawGame,settleGame,saveGame,siteRecords,createSiteRecord,paymentMethods,paymentOf,canDraw} from './game-state.js';
 import './game.css';
 let state=loadGame(),spinning=false,rotation=0,tab='site',payment='chances',result=null,timer=null,feedTimer=null,latestSiteRecord=siteRecords[0];
+window.addEventListener('shenma-game-chances-credit',event=>{state.chances+=event.detail});
 if(state.pending){result=settleGame(state);saveGame(state);}
 const prizeOf=r=>prizes.find(p=>p.id===r.prizeId);
 const amount=p=>p.id==='none'?'未中奖':p.id==='free'?`+${p.quantity} 次`:`×${p.quantity}`;
