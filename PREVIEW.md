@@ -70,3 +70,11 @@ The creator workbench uses the existing VIP 5 Mock user. Its Mock live-state sel
 - 邀请好友：<http://127.0.0.1:4173/#/profile/mock-user?tab=invite>。点击成功邀请人数旁箭头可滚动至邀请记录；每条成功记录固定奖励88钻石。
 
 - 每日签到：<http://127.0.0.1:4173/#/profile/mock-user?tab=checkin>。签到状态支持今日未签到、今日已签到、第7天待签到、本周期已完成；每日一次，次日自动切换周期。
+
+## Independent landing page
+
+- Local: <http://127.0.0.1:4173/landingpage>
+- GitHub Pages: <https://northpeak2026.github.io/Shenma_Live_Web/landingpage/>
+- Build output: `dist/landingpage/index.html`. It imports only landing assets and shared download visuals, with no main-site business modules.
+- Configure `VITE_MAIN_SITE_URL` (or `src/landing-config.js`) before building for a standalone domain; default is the current project's home route.
+- App URLs continue to use `src/download-config.js`.

@@ -1,0 +1,3 @@
+import { downloadConfig } from './download-config.js';
+export function downloadHeroCopy(){return `<div class="download-hero-brand"><span class="brand-mark">${downloadConfig.logoLetter}</span><span>${downloadConfig.appName}</span></div><h1>看直播 <em>上神马</em></h1><p class="download-slogans"><span>网红女神直播 · 行业专家赛前预测</span><span>体育视听盛宴 · 万千佳人相伴</span></p>`}
+export function downloadQrCard(){return `<div class="download-hero-card-head"><span class="brand-mark">${downloadConfig.logoLetter}</span><b>${downloadConfig.appName}</b></div><img class="download-hero-qr" src="${downloadConfig.qrCode}" alt="神马直播 App 下载二维码"><h2>扫描二维码下载 App</h2><p>随时随地，打开精彩体育现场</p>`}
