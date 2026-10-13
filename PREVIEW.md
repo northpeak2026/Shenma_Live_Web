@@ -2,8 +2,8 @@
 
 ## Canonical project
 
-- Canonical Project Root: `/Users/apple/Documents/ChatGPT/Shenma_Live_Web`
-- Git Repository Root: `/Users/apple/Documents/ChatGPT/Shenma_Live_Web`
+- Canonical Project Root: `/Users/pw/Documents/ChatGPT/Shenma_Live_Web`
+- Git Repository Root: `/Users/pw/Documents/ChatGPT/Shenma_Live_Web`
 - Canonical Preview URL: <http://127.0.0.1:4173/>
 - Manual foreground command: `pnpm dev`
 - Codex persistent-server command: `pnpm preview:ensure`

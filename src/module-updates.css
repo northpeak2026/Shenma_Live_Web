@@ -1,7 +1,7 @@
-.data-page{padding:34px 0 76px;min-height:calc(100vh - 250px)}
+.data-page{padding:16px 0 76px;min-height:calc(100vh - 250px)}
 .data-ranking .rank-card{width:100%}
 .data-ranking .rank-row{min-height:54px}
-.data-sport-tabs{margin-bottom:20px}
+.data-sport-tabs{margin-bottom:14px}
 .preview-view-all{color:var(--accent)!important;font-size:13px!important}
 .event-card{grid-template-rows:auto 1fr auto;min-height:161px}
 .event-anchor-foot{display:flex;align-items:center;gap:12px;border-top:1px solid #eef1f4;padding-top:10px}

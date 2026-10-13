@@ -2,7 +2,7 @@
 set -eu
 
 SCREEN_NAME="shenma_live_web_4173"
-PROJECT_ROOT="/Users/apple/Documents/ChatGPT/Shenma_Live_Web"
+PROJECT_ROOT="/Users/pw/Documents/ChatGPT/Shenma_Live_Web"
 PREVIEW_URL="http://127.0.0.1:4173/"
 
 if curl -fsS -o /dev/null --max-time 2 "$PREVIEW_URL"; then

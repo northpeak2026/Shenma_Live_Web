@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-CODEX_NODE="/Users/apple/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
+CODEX_NODE="${HOME}/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
 
 if command -v node >/dev/null 2>&1; then
   NODE_EXEC="$(command -v node)"

@@ -16,7 +16,7 @@ These instructions apply to every Codex task in this repository.
 
 ## Canonical workspace
 
-- The only canonical project and Git root is `/Users/apple/Documents/ChatGPT/Shenma_Live_Web`.
+- The only canonical project and Git root is `/Users/pw/Documents/ChatGPT/Shenma_Live_Web`.
 - Before changing files, verify the Git root matches that exact path.
 - Home, Live, Preview, Matches, Chat, Search, details, and future pages are modules of this one Web project.
 - Do not create or use another project copy, temporary project directory, duplicate repository, or alternate Worktree for ordinary module work.
