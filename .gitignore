@@ -1,2 +1,8 @@
 node_modules/
 dist/
+
+# Local project documentation
+/AGENTS.md
+/PREVIEW.md
+/README.md
+/VISUAL_DESIGN_GUIDE.md
