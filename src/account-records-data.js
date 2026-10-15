@@ -1,0 +1,14 @@
+import {levelThreshold} from './game-rewards.js';
+import {invitationRows} from './invite-data.js';
+const key=user=>`shenma-asset-records-v1-${user.id}-${user.isCreator?'creator':'regular'}`;
+export const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Kuala_Lumpur'});
+export function dateBefore(days,base=today()){const d=new Date(base+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-days);return d.toISOString().slice(0,10)}
+export function readRecords(user){try{const data=JSON.parse(localStorage.getItem(key(user))||'null');if(Array.isArray(data))return data}catch{}return null}
+export function ensureRecords(user,invites=invitationRows()){let rows=readRecords(user);if(rows)return rows;
+ rows=[];const offsets=[0,0,1,1,2,2,3,4,5,6,7,8,9,10,12,14,16,18,20,23,26,29,35,45,60,75,90,120,180,240,365,480];
+ for(const asset of ['exp','diamonds','coins'])offsets.forEach((days,i)=>{const gain=asset==='exp'||i%4<2;const source=asset==='exp'?['完成每日任务','幸运转盘奖励','完成观看直播任务'][i%3]:gain?['完成任务','幸运转盘奖励'][i%2]:['直播间送礼','幸运转盘消耗'][i%2];rows.push({id:`initial-${asset}-${i}`,asset,source,amount:(gain?1:-1)*(asset==='exp'?[20,30,50][i%3]:asset==='diamonds'?[10,66,20,10][i%4]:[50,100,500,100][i%4]),time:`${dateBefore(days)} ${String(20-i%12).padStart(2,'0')}:${String(i*7%60).padStart(2,'0')}:00`})});
+ invites.filter(r=>r.success).forEach(r=>rows.push({id:`invite-${r.id}`,asset:'diamonds',source:'邀请好友奖励',amount:88,time:r.time+':00'}));
+ localStorage.setItem(key(user),JSON.stringify(rows));return rows;
+}
+export function appendChanges(user,next,source='账户变动',explicit={}){const rows=ensureRecords(user);const time=new Date().toLocaleString('sv-SE',{timeZone:'Asia/Kuala_Lumpur'}).replace(',','');for(const asset of ['coins','diamonds','exp']){let amount=explicit[asset]??((next[asset]??0)-(user[asset]??0));if(asset==='exp'&&next.vip>user.vip){for(let level=user.vip;level<next.vip;level++)amount+=level===user.vip?user.nextExp:levelThreshold(level)}if(amount&&Number.isFinite(amount)&&(asset!=='exp'||amount>0))rows.unshift({id:`${Date.now()}-${asset}-${Math.random().toString(36).slice(2)}`,asset,source,amount,time})}localStorage.setItem(key(user),JSON.stringify(rows))}
+export function selectRecords(rows,{asset,range='30',start='',end='',page=1},base=today()){const from=range==='custom'?start:dateBefore(Number(range)-1,base),to=range==='custom'?end:base;const error=range==='custom'?(!start||!end?'请选择开始日期和结束日期':start>end?'开始日期不能晚于结束日期':''):'';const filtered=error?[]:rows.filter(r=>r.asset===asset&&r.time.slice(0,10)>=from&&r.time.slice(0,10)<=to).sort((a,b)=>b.time.localeCompare(a.time));const pages=Math.max(1,Math.ceil(filtered.length/12)),current=Math.min(pages,Math.max(1,Number(page)||1));return {rows:filtered.slice((current-1)*12,current*12),count:filtered.length,pages,page:current,error}}

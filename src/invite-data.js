@@ -1,0 +1,3 @@
+export const inviteReward=88;
+export function invitationRows(empty=false){if(empty)return [];const names=['足球小王','南看台阿林','篮球小七','绿茵漫步','橙子看球','北岸球迷','晴天有球','林间晚风','热刺小周','阿明聊球','夏日球场','星河看台'];return names.map((name,i)=>{const date=new Date();date.setDate(date.getDate()-Math.floor(i/3));return {id:i,name,avatar:`https://i.pravatar.cc/80?img=${[12,14,25,32,41,7,49,20,44,56,36,45][i]}`,time:date.toLocaleDateString('sv-SE',{timeZone:'Asia/Kuala_Lumpur'})+' '+['09:20','08:45','08:10'][i%3],success:i!==3&&i!==9}})}
+export function invitationTotals(rows){const count=rows.filter(row=>row.success).length;return {count,diamonds:count*inviteReward}}

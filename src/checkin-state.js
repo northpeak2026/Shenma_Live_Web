@@ -24,4 +24,4 @@ else{patch.inventory??={...(user.inventory||{})};patch.inventory[reward.id]={...
 if(chances){patch.freeSpins=(user.freeSpins||0)+chances;const game=loadGame();game.chances+=chances;
 if(!saveGame(game))throw new Error('奖励保存失败，请重试');
 if(typeof window!=='undefined')window.dispatchEvent(new CustomEvent('shenma-game-chances-credit',{detail:chances}))}
-updateAuthUser(patch);state.claimed.push(state.claimed.length);state.streak++;state.lastDate=checkinDate();state.lastReward=items.map(r=>({...r}));save(state);return items}
+updateAuthUser(patch,'每日签到奖励');state.claimed.push(state.claimed.length);state.streak++;state.lastDate=checkinDate();state.lastReward=items.map(r=>({...r}));save(state);return items}

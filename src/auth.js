@@ -1,3 +1,4 @@
+import {appendChanges} from './account-records-data.js';
 import defaultUserAvatar from "./assets/user-avatar.png";
 const AUTH_STORAGE_KEY = "shenma-live-web-auth";
 
@@ -54,9 +55,10 @@ const eyeIcon = (visible) => visible
   : `<svg class="auth-eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 8.8C2.7 9.5 2.5 10 2.5 10s3.5 6 9.5 6c1.3 0 2.5-.3 3.5-.7"></path><path d="M20.8 13.2c.5-.7.7-1.2.7-1.2S18 6 12 6c-1.3 0-2.5.3-3.5.7"></path><path d="M4 4l16 16"></path></svg>`;
 
 export const getAuthUser = () => currentUser;
-export function updateAuthUser(patch) {
+export function updateAuthUser(patch, source='账户变动', explicit={}) {
   if (!currentUser) return;
   const nextUser = normalizeUser({...currentUser, ...patch});
+  appendChanges(currentUser,nextUser,source,explicit);
   localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(nextUser));
   currentUser = nextUser;
 }
@@ -88,6 +90,7 @@ export function authHeaderArea(link = hash => hash) {
         <a href="${link('#/profile/mock-user?tab=tasks')}" role="menuitem"><span>任务中心</span><b>›</b></a>
         <a href="${link('#/profile/mock-user?tab=checkin')}" role="menuitem"><span>每日签到</span><b>›</b></a>
         <a href="${link('#/profile/mock-user?tab=invite')}" role="menuitem"><span>邀请好友</span><b>›</b></a>
+        <div class="auth-menu-divider" role="separator"></div>
         <button type="button" data-auth-logout role="menuitem"><span>退出登录</span><b>↗</b></button>
       </section>
     </div>`;

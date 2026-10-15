@@ -15,7 +15,7 @@ export function persistGameAccount(state){
   const user=getAuthUser();
   state.accountSync=Boolean(user);state.owner=ownerOf(user);
   if(!saveGame(state))return false;
-  if(user){try{updateAuthUser(Object.fromEntries(['vip','exp','nextExp','diamonds','coins','inventory'].map(field=>[field,state[field]])));}catch{return false;}}
+  if(user){try{updateAuthUser(Object.fromEntries(['vip','exp','nextExp','diamonds','coins','inventory'].map(field=>[field,state[field]])),state.pending?'幸运转盘消耗':'幸运转盘奖励');}catch{return false;}}
   state.accountSync=false;
   return saveGame(state);
 }
