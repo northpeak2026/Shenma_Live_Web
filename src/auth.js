@@ -1,3 +1,4 @@
+import defaultUserAvatar from "./assets/user-avatar.png";
 const AUTH_STORAGE_KEY = "shenma-live-web-auth";
 
 const MOCK_USER = {
@@ -5,7 +6,8 @@ const MOCK_USER = {
   nickname: "神马球迷",
   vip: 3, exp: 2350, nextExp: 5000, diamonds: 1280, coins: 8650, isCreator: false, creatorApplicationStatus: "not_applied", applicationEditCount: 0,
   userId: "SM884208",
-  avatar: "https://i.pravatar.cc/160?img=49",
+  avatar: defaultUserAvatar,
+  avatarVersion: 1,
 };
 
 const initialForm = () => ({
@@ -21,7 +23,7 @@ const normalizeUser = user => ({...user, isCreator: user.creatorApplicationStatu
 const readStoredUser = () => {
   try {
     const stored = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY) || "null");
-    return stored?.id ? normalizeUser({ ...MOCK_USER, ...stored, creatorApplicationStatus: stored.creatorApplicationStatus || (stored.isCreator ? "approved" : "not_applied") }) : null;
+    return stored?.id ? normalizeUser({ ...MOCK_USER, ...stored, ...(stored.avatarVersion === 1 ? {} : {avatar: defaultUserAvatar, avatarVersion: 1}), creatorApplicationStatus: stored.creatorApplicationStatus || (stored.isCreator ? "approved" : "not_applied") }) : null;
   } catch {
     return null;
   }
@@ -83,8 +85,9 @@ export function authHeaderArea(link = hash => hash) {
         <div class="account-vip"><b>VIP ${currentUser.vip}</b><span>${currentUser.exp.toLocaleString()} / ${currentUser.nextExp.toLocaleString()} 经验值</span><progress value="${currentUser.exp}" max="${currentUser.nextExp}" aria-label="VIP 升级进度"></progress></div>
         <div class="account-menu-assets"><span>💎 ${currentUser.diamonds.toLocaleString()}</span><span>🪙 ${currentUser.coins.toLocaleString()}</span></div>
         <a href="${link('#/profile/mock-user')}" role="menuitem"><span>个人中心</span><b>›</b></a>
-        <a href="${link('#/profile/mock-user?tab=following')}" role="menuitem"><span>我的关注</span><b>›</b></a>
-        <a href="${link(currentUser.isCreator?'#/creator':'#/profile/mock-user?tab=creator')}" role="menuitem"><span>${currentUser.isCreator?'主播工作台':currentUser.creatorApplicationStatus==='reviewing'?'主播申请':'申请成为主播'}</span><b>›</b></a>
+        <a href="${link('#/profile/mock-user?tab=tasks')}" role="menuitem"><span>任务中心</span><b>›</b></a>
+        <a href="${link('#/profile/mock-user?tab=checkin')}" role="menuitem"><span>每日签到</span><b>›</b></a>
+        <a href="${link('#/profile/mock-user?tab=invite')}" role="menuitem"><span>邀请好友</span><b>›</b></a>
         <button type="button" data-auth-logout role="menuitem"><span>退出登录</span><b>↗</b></button>
       </section>
     </div>`;

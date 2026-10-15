@@ -1,3 +1,4 @@
+import {normalizeRewards,applyReward} from './game-rewards.js';
 export const prizes = [
   {id:'diamond',name:'钻石',quantity:66,icon:'💎',weight:20},
   {id:'coin',name:'金币',quantity:88,icon:'🪙',weight:24},
@@ -18,11 +19,16 @@ export const initialBalances={chances:10,diamonds:1280,coins:8650};
 export function paymentOf(id){return paymentMethods.find(method=>method.id===id);}
 export function canDraw(state,id='chances'){const method=paymentOf(id);return Boolean(method&&Number.isFinite(state[method.id])&&state[method.id]>=method.cost&&!state.pending);}
 const key='shenma-game-treasure-v1';
-export function loadGame(){try{const s=JSON.parse(localStorage.getItem(key));if(Number.isInteger(s?.chances)&&s.chances>=0&&Array.isArray(s.records))return {...s,diamonds:Number.isInteger(s.diamonds)&&s.diamonds>=0?s.diamonds:initialBalances.diamonds,coins:Number.isInteger(s.coins)&&s.coins>=0?s.coins:initialBalances.coins,records:s.records.filter(r=>prizes.some(p=>p.id===r.prizeId)&&Number.isFinite(r.time))};}catch{}return {...initialBalances,records:[],pending:null};}
+export function loadGame(){try{const s=JSON.parse(localStorage.getItem(key));if(Number.isInteger(s?.chances)&&s.chances>=0&&Array.isArray(s.records))return normalizeRewards({...s,diamonds:Number.isInteger(s.diamonds)&&s.diamonds>=0?s.diamonds:initialBalances.diamonds,coins:Number.isInteger(s.coins)&&s.coins>=0?s.coins:initialBalances.coins,records:s.records.filter(r=>prizes.some(p=>p.id===r.prizeId)&&Number.isFinite(r.time))});}catch{}return normalizeRewards({...initialBalances,records:[],pending:null});}
 export function selectPrize(random=Math.random){const total=prizes.reduce((s,p)=>s+p.weight,0);let n=random()*total;return prizes.find(p=>(n-=p.weight)<0)||prizes.at(-1);}
 export function saveGame(state){try{localStorage.setItem(key,JSON.stringify(state));return true;}catch{return false;}}
 export function drawGame(state,random=Math.random,now=Date.now(),payment='chances'){if(!canDraw(state,payment))return null;const method=paymentOf(payment);const prize=selectPrize(random);const record={id:`${now}-${Math.random().toString(36).slice(2)}`,time:now,prizeId:prize.id,payment:method.id,cost:method.cost};state[method.id]-=method.cost;state.records.unshift(record);state.pending=record.id;return {prize,record};}
-export function settleGame(state){const record=state.records.find(r=>r.id===state.pending);if(record?.prizeId==='free')state.chances+=prizes.find(p=>p.id==='free').quantity;state.pending=null;return record;}
+export function settleGame(state){
+  const record=state.records.find(r=>r.id===state.pending);
+  if(record&&!record.settled){record.reward=applyReward(state,prizes.find(p=>p.id===record.prizeId));record.settled=true;}
+  state.pending=null;
+  return record;
+}
 export const siteRecords=Array.from({length:18},(_,i)=>({nickname:['晴***球','小***熊','阿***辰','橙***水','追***风','星***河'][i%6],avatar:['🦊','🐻','🐼','🐱','🐯','🐰'][i%6],prizeId:prizes[i%7].id,time:Date.now()-(i+1)*79000}));
 
 const siteUsers = [
