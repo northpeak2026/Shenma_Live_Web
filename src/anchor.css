@@ -38,17 +38,16 @@
 .anchor-plan .match-line-score{font-size:20px;text-align:center;color:#29313d;width:auto}
 .anchor-plan-action{display:flex;justify-content:flex-end;align-items:center;gap:5px;font-size:11px;color:#a2abb6;flex-wrap:wrap}
 .anchor-plan-action.live{color:#ef6651}
-.anchor-plan-action small{font-size:11px;color:#929ba8;flex-basis:100%;text-align:right;margin-top:7px}
 .anchor-replay-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 18px}
 .anchor-replay.live-card{display:block;padding:0;background:white;text-align:left;color:#29313d;border:1px solid #edf0f3;border-radius:10px;overflow:hidden;font:inherit;min-width:0;transition:transform .2s,box-shadow .2s}
 .anchor-replay:hover{transform:translateY(-3px);box-shadow:0 8px 20px #29313d0c}
-.anchor-replay .cover{position:relative;aspect-ratio:16/10;overflow:hidden}
+.anchor-replay .cover{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
 .anchor-replay .cover img{width:100%;height:100%;object-fit:cover}
 .anchor-replay .tag{color:white;background:#ff6a52;top:10px;left:10px;font-size:10px}
 .anchor-duration{position:absolute;bottom:9px;right:9px;background:#1b232eb0;color:white;padding:3px 6px;border-radius:4px;font-size:10px}
 .anchor-replay .card-copy{padding:12px}
-.anchor-replay .card-copy h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;font-size:13px;line-height:1.7;min-height:44px;margin:0 0 10px}
-.anchor-replay .card-copy p{display:flex;justify-content:space-between;gap:8px;color:#929ba8;font-size:10px;margin:0}
+.anchor-replay .card-copy h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;font-size:13px;line-height:1.7;min-height:44px;margin:0 0 8px}
+.anchor-replay .card-copy p{display:flex;align-items:center;color:#929ba8;font-size:10px;margin:0}
 .anchor-empty{text-align:center;padding:44px 20px;color:#929ba8;font-size:13px}
 .anchor-empty i{display:grid;place-items:center;background:#f6f8fa;color:#bbc3ce;font-size:28px;font-style:normal;width:56px;height:56px;border-radius:16px;margin:0 auto 15px}
 .anchor-notice{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);padding:12px 20px;color:white;background:#29313df0;border-radius:8px;font-size:13px;z-index:100;opacity:0;pointer-events:none}
