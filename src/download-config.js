@@ -5,6 +5,7 @@ export const downloadConfig = {
   appName: "神马直播",
   logoLetter: "S",
   qrCode,
+  h5Url: import.meta.env.VITE_H5_SITE_URL || 'https://smzb999.com/',
   iosUrl: "",
   androidUrl: "",
 };

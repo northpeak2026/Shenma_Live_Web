@@ -1,21 +1,27 @@
+import iosStep1 from './assets/ios-home-screen/step-1.png';
+import iosStep2 from './assets/ios-home-screen/step-2.png';
+import iosStep3 from './assets/ios-home-screen/step-3.png';
+import iosStep4 from './assets/ios-home-screen/step-4.png';
+import iosStep5 from './assets/ios-home-screen/step-5.png';
 import { downloadHeroCopy, downloadQrCard } from './download-visual.js';
 import { downloadConfig, downloadUrl, preferredPlatform } from "./download-config.js";
 
 let activeTutorial = "ios";
 
 const tutorialData = {
-  ios: {
-    eyebrow: "超级签安装方式",
-    title: "iOS 安装教程",
-    action: "iOS 立即下载",
-    steps: [
-      ["扫描二维码或点击立即下载", "请使用 Safari 打开神马直播下载页。", "⌁"],
-      ["点击安装", "根据下载页面提示，确认安装神马直播 App。", "↓"],
-      ["等待 App 安装完成", "返回手机桌面，即可查看 App 安装进度。", "…"],
-      ["完成设备授权", "如系统要求授权或信任，请按照提示完成操作。", "✓"],
-      ["打开神马直播", "授权完成后，即可畅享体育直播与互动。", "▶"],
-    ],
-  },
+ios: {
+  eyebrow: "通过浏览器将 H5 网页添加到主屏幕，无需下载安装包",
+  title: "iOS 添加到主屏幕教程",
+  action: "打开 H5 网页",
+  images: [iosStep1,iosStep2,iosStep3,iosStep4,iosStep5],
+  steps: [
+    ["打开网页，点击分享", "使用 iPhone 浏览器打开神马直播 H5 网页，点击地址栏旁的分享图标。"],
+    ["展开更多操作", "在分享面板中点击“更多”。不同浏览器的菜单位置可能略有不同。"],
+    ["选择添加到主屏幕", "在操作列表中找到并点击“添加到主屏幕”。"],
+    ["确认名称并添加", "确认名称为“神马直播”，点击右上角“添加”；如有“作为网页 App 打开”选项，可保持开启。"],
+    ["从桌面快捷访问", "返回手机主屏幕，点击“神马直播”图标，即可快捷打开 H5 网页。"],
+  ],
+},
   android: {
     eyebrow: "APK 安装方式",
     title: "Android 安装教程",
@@ -63,7 +69,8 @@ function hostPhone(images) {
 
 function tutorialMarkup() {
   const data = tutorialData[activeTutorial];
-  return `<div class="tutorial-intro"><span><b>${data.title}</b><small>${data.eyebrow}</small></span><button class="tutorial-download-button" type="button" data-platform-download="${activeTutorial}">${data.action}</button></div><div class="tutorial-steps">${data.steps.map((step, index) => `<article class="tutorial-step"><span class="tutorial-step-number">${String(index + 1).padStart(2, "0")}</span><h3>${step[0]}</h3><p>${step[1]}</p><div class="tutorial-phone"><div class="tutorial-phone-bar">9:41　　神马直播</div><div class="tutorial-phone-screen"><i>${step[2]}</i><b>${step[0]}</b><small>${activeTutorial === "ios" ? "Safari · 神马直播" : "Android · 神马直播 APK"}</small>${index < 4 ? `<button>${index === 0 ? "立即下载" : "继续"}</button>` : ""}</div></div></article>`).join("")}</div>`;
+const action=activeTutorial==='ios'?`<a class="tutorial-download-button" href="${downloadConfig.h5Url}" target="_blank" rel="noopener noreferrer">${data.action}</a>`:`<button class="tutorial-download-button" type="button" data-platform-download="${activeTutorial}">${data.action}</button>`;
+return `<div class="tutorial-intro"><span><b>${data.title}</b><small>${data.eyebrow}</small></span>${action}</div><div class="tutorial-steps ${activeTutorial==='ios'?'ios-shortcut-steps':''}">${data.steps.map((step,index)=>`<article class="tutorial-step"><span class="tutorial-step-number">${String(index+1).padStart(2,'0')}</span><h3>${step[0]}</h3><p>${step[1]}</p>${activeTutorial==='ios'?`<a class="ios-tutorial-image" href="${data.images[index]}" target="_blank" rel="noopener noreferrer" aria-label="查看第${index+1}步大图：${step[0]}"><img src="${data.images[index]}" alt="第${index+1}步：${step[0]}，按红色箭头指引操作" loading="lazy"><span>查看大图 ↗</span></a>`:`<div class="tutorial-phone"><div class="tutorial-phone-bar">9:41　　神马直播</div><div class="tutorial-phone-screen"><i>${step[2]}</i><b>${step[0]}</b><small>Android · 神马直播 APK</small>${index<4?`<button>${index===0?'立即下载':'继续'}</button>`:''}</div></div>`}</article>`).join('')}</div>`;
 }
 
 function features(images) {
@@ -78,7 +85,7 @@ function features(images) {
 
 export function downloadPage({ header, footer, images }) {
   const styles = `--football-bg:url('${images.football}');--basketball-bg:url('${images.basketball}')`;
-  return `${header()}<main class="download-page" style="${styles}"><section><div class="download-shell download-hero"><div class="download-hero-copy">${downloadHeroCopy()}<div class="download-hero-tags"><span>高清体育直播</span><span>实时赛事比分</span><span>人气主播互动</span><span>多端记录同步</span></div></div><aside class="download-hero-card">${downloadQrCard()}</aside></div></section>${features(images)}<section class="download-section download-tutorial" id="install-guide"><div class="download-shell"><header class="download-section-heading"><span>INSTALL GUIDE</span><h2>安装教程</h2><p>根据你的手机系统选择安装方式，按照步骤即可快速开始使用神马直播。</p></header><nav class="download-tutorial-tabs" role="tablist"><button class="${activeTutorial === "ios" ? "selected" : ""}" data-download-tab="ios" role="tab" aria-selected="${activeTutorial === "ios"}">iOS</button><button class="${activeTutorial === "android" ? "selected" : ""}" data-download-tab="android" role="tab" aria-selected="${activeTutorial === "android"}">Android</button></nav><div class="download-tutorial-content">${tutorialMarkup()}</div></div></section><div class="download-page-toast" id="downloadPageToast" role="status"></div></main>${footer()}`;
+  return `${header()}<main class="download-page" style="${styles}"><section><div class="download-shell download-hero"><div class="download-hero-copy">${downloadHeroCopy()}<div class="download-hero-tags"><span>高清体育直播</span><span>实时赛事比分</span><span>人气主播互动</span><span>多端记录同步</span></div></div><aside class="download-hero-card">${downloadQrCard()}</aside></div></section>${features(images)}<section class="download-section download-tutorial" id="install-guide"><div class="download-shell"><header class="download-section-heading"><span>INSTALL GUIDE</span><h2>安装教程</h2><p>iOS 可将网页添加到主屏幕快捷访问，Android 可下载安装包，按下方步骤开始使用。</p></header><nav class="download-tutorial-tabs" role="tablist"><button class="${activeTutorial === "ios" ? "selected" : ""}" data-download-tab="ios" role="tab" aria-selected="${activeTutorial === "ios"}">iOS</button><button class="${activeTutorial === "android" ? "selected" : ""}" data-download-tab="android" role="tab" aria-selected="${activeTutorial === "android"}">Android</button></nav><div class="download-tutorial-content">${tutorialMarkup()}</div></div></section><div class="download-page-toast" id="downloadPageToast" role="status"></div></main>${footer()}`;
 }
 
 function showDownloadToast(text) {
