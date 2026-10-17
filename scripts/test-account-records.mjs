@@ -15,3 +15,11 @@ const count=initial.length;appendChanges(user,{...user,coins:8800,diamonds:1270,
 appendChanges(user,{...user,vip:4,exp:50,nextExp:8000},'幸运转盘奖励');assert.equal(ensureRecords(user).find(r=>r.source==='幸运转盘奖励'&&r.asset==='exp'&&r.time.slice(0,10)===today()&&r.amount===2700)?.amount,2700);
 assert.equal(user.coins,8700);assert.equal(ensureRecords({...user,id:'other'}).length,count);
 console.log('通过：三类记录数量、邀请数据关联、收支方向、筛选边界、历史日期、空状态、分页、增量入账、跨级经验值、账户隔离。');
+appendChanges(user,{...user,coins:user.coins-400},'购买有料');
+appendChanges(user,{...user,diamonds:user.diamonds-38},'购买有料');
+for(const [asset,amount] of [['coins',-400],['diamonds',-38]]){
+ const selected=selectRecords(ensureRecords(user),{asset,source:'购买有料',range:'1'});
+ assert.equal(selected.count,1);assert.equal(selected.rows[0].source,'购买有料');assert.equal(selected.rows[0].amount,amount);
+}
+assert.equal(selectRecords(ensureRecords(user),{asset:'coins',source:'不存在的类型'}).count,0);
+console.log('通过：购买有料金币/钻石扣款记录、类型筛选和空结果。');
