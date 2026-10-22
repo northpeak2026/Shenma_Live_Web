@@ -12,6 +12,19 @@
 /* Eight compact gift covers fit before the asset area; pagination hugs the final cover. */
 .room-page:not(.match-detail-page) .chat-content>.entry-toast{text-align:left;padding:0 15px}
 .player-controls button[data-player="danmaku"].is-off{position:relative}
+.player-volume{position:relative;display:flex;align-items:center}
+.player-volume-pop{position:absolute;bottom:100%;left:0;width:100%;box-sizing:border-box;display:flex;justify-content:center;padding:12px 0;background:rgba(23,31,42,.94);border-radius:8px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s}
+.player-volume:hover .player-volume-pop,.player-volume:focus-within .player-volume-pop{opacity:1;visibility:visible;pointer-events:auto}
+.player-controls .player-volume-pop input{display:block;writing-mode:vertical-lr;direction:rtl;width:16px;height:100px;margin:0}
+.player-controls.has-progress{flex-wrap:nowrap}
+.player-controls.has-progress .player-controls-left{order:0;flex:0 0 auto}
+.player-controls.has-progress .player-controls-right{order:2;flex:0 0 auto}
+.replay-progress{order:1;display:flex;align-items:center;gap:8px;flex:1 1 0;min-width:0;color:#fff;font-size:11px;font-variant-numeric:tabular-nums}
+.player-controls .replay-progress input{flex:1;width:0;min-width:0}
+.replay-progress span{white-space:nowrap}
+.room-player:fullscreen{width:100%;height:100%;margin:0;border-radius:0;aspect-ratio:auto}
+.room-player:fullscreen>img{object-fit:contain}
+.room-player>video{display:block;width:100%;height:100%;object-fit:contain}
 .player-controls button[data-player="danmaku"].is-off::after{content:'';position:absolute;left:5px;top:50%;width:calc(100% - 10px);height:1px;background:currentColor;transform:rotate(35deg);transform-origin:center;pointer-events:none}
 .gift-row{flex-wrap:wrap;gap:14px 18px;align-items:center}
 .gift-carousel{flex:1 1 570px;gap:7px;max-width:100%}

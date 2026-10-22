@@ -1,0 +1,9 @@
+const positions=new Map();
+export let volume=68;
+export function setVolume(value){volume=Math.max(0,Math.min(100,Number(value)))}
+export function playbackTime(seconds){seconds=Math.floor(seconds);return [Math.floor(seconds/3600),Math.floor(seconds/60)%60,seconds%60].map(n=>String(n).padStart(2,'0')).join(':')}
+export function replayPosition(room){return positions.get(room.id)||0}
+export function seekReplay(room,value){positions.set(room.id,Math.max(0,Math.min(room.durationSeconds,Number(value))))}
+export function replayControls(room){return `<div class="replay-progress"><input data-replay-seek type="range" min="0" max="${room.durationSeconds}" value="${replayPosition(room)}" aria-label="录像播放进度"><span data-replay-clock>${playbackTime(replayPosition(room))} / ${playbackTime(room.durationSeconds)}</span></div>`}
+export function roomMedia(room){return room.videoUrl?`<video data-room-video src="${room.videoUrl}" poster="${room.cover}" playsinline preload="metadata"></video>`:`<img src="${room.cover}" alt="${room.title}">`}
+export function syncRoomMedia(room,{playing,muted}){const video=document.querySelector('[data-room-video]');if(!video)return;video.volume=volume/100;video.muted=muted;const resume=()=>{if(room.mode==='replay')video.currentTime=Math.min(replayPosition(room),video.duration||room.durationSeconds);if(playing)video.play().catch(()=>{});else video.pause()};if(video.readyState)resume();else video.addEventListener('loadedmetadata',resume,{once:true});video.addEventListener('timeupdate',()=>{if(room.mode==='replay')seekReplay(room,video.currentTime)});document.querySelector('[data-player-volume]')?.addEventListener('input',()=>{video.volume=volume/100;video.muted=volume===0});document.querySelector('[data-replay-seek]')?.addEventListener('input',event=>{video.currentTime=Number(event.target.value)})}
