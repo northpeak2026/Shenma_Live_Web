@@ -1,8 +1,3 @@
-import iosStep1 from './assets/ios-home-screen/step-1.png';
-import iosStep2 from './assets/ios-home-screen/step-2.png';
-import iosStep3 from './assets/ios-home-screen/step-3.png';
-import iosStep4 from './assets/ios-home-screen/step-4.png';
-import iosStep5 from './assets/ios-home-screen/step-5.png';
 import { downloadHeroCopy, downloadQrCard } from './download-visual.js';
 import { downloadConfig, downloadUrl, preferredPlatform } from "./download-config.js";
 
@@ -13,7 +8,8 @@ ios: {
   eyebrow: "通过浏览器将 H5 网页添加到主屏幕，无需下载安装包",
   title: "iOS 添加到主屏幕教程",
   action: "打开 H5 网页",
-  images: [iosStep1,iosStep2,iosStep3,iosStep4,iosStep5],
+  images: Array.from({ length: 5 }, (_, index) => `${import.meta.env.BASE_URL}assets/download/ios-chrome-step-${index + 1}.png`),
+  dimensions: Array.from({ length: 5 }, () => [763,512]),
   steps: [
     ["打开网页，点击分享", "使用 iPhone 浏览器打开神马直播 H5 网页，点击地址栏旁的分享图标。"],
     ["展开更多操作", "在分享面板中点击“更多”。不同浏览器的菜单位置可能略有不同。"],
@@ -22,16 +18,30 @@ ios: {
     ["从桌面快捷访问", "返回手机主屏幕，点击“神马直播”图标，即可快捷打开 H5 网页。"],
   ],
 },
+  webclip: {
+    eyebrow: "通过描述文件添加桌面入口",
+    title: "苹果快捷版安装教程",
+    images: Array.from({ length: 5 }, (_, index) => `${import.meta.env.BASE_URL}assets/download/ios-webclip-step-${index + 1}.png`),
+    dimensions: [[446,980],[436,984],[448,976],[446,978],[444,970]],
+    steps: [
+      ["步骤 1", "点击下载按钮，安装描述文件。"],
+      ["步骤 2", "进入手机的系统设置，找到「通用」→「VPN与设备管理」，点击刚才下载的描述文件。"],
+      ["步骤 3", "点击右上角的「安装」按钮。"],
+      ["步骤 4", "输入手机的解锁密码。"],
+      ["步骤 5", "点击「下一步」，完成安装后，即可在手机桌面看到 App。"],
+    ],
+  },
   android: {
     eyebrow: "APK 安装方式",
-    title: "Android 安装教程",
-    action: "Android 立即下载",
+    title: "安卓安装教程",
+    images: Array.from({ length: 4 }, (_, index) => `${import.meta.env.BASE_URL}assets/download/android-install-step-${index + 1}.png`),
+    dimensions: [[750,1654],[740,1654],[750,1646],[742,1658]],
+    note: "不同 Android 品牌的系统提示可能不同，本教程展示通用 APK 安装流程。",
     steps: [
-      ["下载 APK", "扫描二维码或点击按钮下载 Android 安装包。", "↓"],
-      ["打开安装包", "下载完成后，在浏览器下载列表中点击 APK。", "▣"],
-      ["允许安装应用", "如系统提示，请开启本次未知来源应用安装权限。", "✓"],
-      ["完成安装", "点击安装并稍候片刻，等待安装进度完成。", "…"],
-      ["打开神马直播", "安装成功后，点击图标即可进入神马直播。", "▶"],
+      ["点击立即下载", "点击下载页里的「立即下载」按钮。"],
+      ["确认下载", "点击弹窗里的「仍然下载」（这一步是手机系统误报导致）。"],
+      ["继续安装", "点击「继续安装」（我们不会收集你的个人信息）。"],
+      ["完成安装", "点击「继续安装」后，即可体验 App。"],
     ],
   },
 };
@@ -70,7 +80,8 @@ function hostPhone(images) {
 function tutorialMarkup() {
   const data = tutorialData[activeTutorial];
 
-return `<div class="tutorial-intro"><span><b>${data.title}</b><small>${data.eyebrow}</small></span></div><div class="tutorial-steps ${activeTutorial==='ios'?'ios-shortcut-steps':''}">${data.steps.map((step,index)=>`<article class="tutorial-step"><span class="tutorial-step-number">${String(index+1).padStart(2,'0')}</span><h3>${step[0]}</h3><p>${step[1]}</p>${activeTutorial==='ios'?`<a class="ios-tutorial-image" href="${data.images[index]}" target="_blank" rel="noopener noreferrer" aria-label="查看第${index+1}步大图：${step[0]}"><img src="${data.images[index]}" alt="第${index+1}步：${step[0]}，按红色箭头指引操作" loading="lazy"><span>查看大图 ↗</span></a>`:`<div class="tutorial-phone"><div class="tutorial-phone-bar">9:41　　神马直播</div><div class="tutorial-phone-screen"><i>${step[2]}</i><b>${step[0]}</b><small>Android · 神马直播 APK</small>${index<4?`<button>${index===0?'立即下载':'继续'}</button>`:''}</div></div>`}</article>`).join('')}</div>`;
+  const isShortcut = activeTutorial === 'ios';
+  return `<div class="tutorial-intro"><span><b>${data.title}</b><small>${data.eyebrow}</small></span></div><div class="tutorial-steps ${isShortcut ? 'ios-shortcut-steps' : 'install-screenshot-steps'} ${activeTutorial === 'android' ? 'android-install-steps' : ''}">${data.steps.map((step,index) => `<article class="tutorial-step"><span class="tutorial-step-number">${String(index+1).padStart(2,'0')}</span><h3>${step[0]}</h3><p>${step[1]}</p><a class="ios-tutorial-image" href="${data.images[index]}" target="_blank" rel="noopener noreferrer" aria-label="查看第${index+1}步大图：${step[0]}"><img src="${data.images[index]}" alt="${isShortcut ? `第${index+1}步：${step[0]}，按红色箭头指引操作` : `${data.title}，第${index+1}步：${step[1]}`}" ${data.dimensions ? `width="${data.dimensions[index][0]}" height="${data.dimensions[index][1]}"` : ''} loading="lazy"><span>查看大图 ↗</span></a></article>`).join('')}</div>${data.note ? `<p class="tutorial-install-note">${data.note}</p>` : ''}`;
 }
 
 function features(images) {
@@ -85,7 +96,7 @@ function features(images) {
 
 export function downloadPage({ header, footer, images }) {
   const styles = `--football-bg:url('${images.football}');--basketball-bg:url('${images.basketball}')`;
-  return `${header()}<main class="download-page" style="${styles}"><section><div class="download-shell download-hero"><div class="download-hero-copy">${downloadHeroCopy()}<div class="download-hero-tags"><span>高清体育直播</span><span>实时赛事比分</span><span>人气主播互动</span><span>多端记录同步</span></div></div><aside class="download-hero-card">${downloadQrCard()}</aside></div></section>${features(images)}<section class="download-section download-tutorial" id="install-guide"><div class="download-shell"><header class="download-section-heading"><span>INSTALL GUIDE</span><h2>安装教程</h2><p>iOS 可将网页添加到主屏幕快捷访问，Android 可下载安装包，按下方步骤开始使用。</p></header><nav class="download-tutorial-tabs" role="tablist"><button class="${activeTutorial === "ios" ? "selected" : ""}" data-download-tab="ios" role="tab" aria-selected="${activeTutorial === "ios"}">iOS</button><button class="${activeTutorial === "android" ? "selected" : ""}" data-download-tab="android" role="tab" aria-selected="${activeTutorial === "android"}">Android</button></nav><div class="download-tutorial-content">${tutorialMarkup()}</div></div></section><div class="download-page-toast" id="downloadPageToast" role="status"></div></main>${footer()}`;
+  return `${header()}<main class="download-page" style="${styles}"><section><div class="download-shell download-hero"><div class="download-hero-copy">${downloadHeroCopy()}<div class="download-hero-tags"><span>高清体育直播</span><span>实时赛事比分</span><span>人气主播互动</span><span>多端记录同步</span></div></div><aside class="download-hero-card">${downloadQrCard()}</aside></div></section>${features(images)}<section class="download-section download-tutorial" id="install-guide"><div class="download-shell"><header class="download-section-heading"><span>安装指引</span><h2>安装教程</h2><p>选择苹果桌面快捷方式、苹果快捷版或安卓，按下方步骤开始使用。</p></header><nav class="download-tutorial-tabs" role="tablist"><button class="${activeTutorial === "ios" ? "selected" : ""}" data-download-tab="ios" role="tab" aria-selected="${activeTutorial === "ios"}">苹果</button><button class="${activeTutorial === "webclip" ? "selected" : ""}" data-download-tab="webclip" role="tab" aria-selected="${activeTutorial === "webclip"}">苹果快捷版</button><button class="${activeTutorial === "android" ? "selected" : ""}" data-download-tab="android" role="tab" aria-selected="${activeTutorial === "android"}">安卓</button></nav><div class="download-tutorial-content">${tutorialMarkup()}</div></div></section><div class="download-page-toast" id="downloadPageToast" role="status"></div></main>${footer()}`;
 }
 
 function showDownloadToast(text) {

@@ -91,3 +91,12 @@
 .ios-tutorial-image>span{display:flex;align-items:center;justify-content:center;border-top:1px solid #e9edf2;background:#fff;color:#8a96a3;font-size:10px}
 .ios-tutorial-image:hover>span{color:#ff5a43}
 @media(max-width:760px){.ios-shortcut-steps .tutorial-step h3{min-height:0}.ios-shortcut-steps .tutorial-step p{min-height:0}.ios-shortcut-steps .ios-tutorial-image{grid-template-rows:280px 30px;width:min(220px,100%);height:310px;margin:8px auto 0}.ios-shortcut-steps .ios-tutorial-image>img{height:280px}.tutorial-intro{flex-wrap:wrap}}
+
+.install-screenshot-steps .tutorial-step{display:flex;flex-direction:column}
+.install-screenshot-steps .tutorial-step p{flex:1;padding-bottom:14px;overflow-wrap:anywhere}
+.install-screenshot-steps .ios-tutorial-image{display:block;width:100%;margin-top:auto;border:1px solid #e3e9ef;border-radius:12px;background:#f5f7fa;overflow:hidden}
+.install-screenshot-steps .ios-tutorial-image>img{display:block;width:100%;height:auto;object-fit:contain}
+.install-screenshot-steps .ios-tutorial-image>span{min-height:30px}
+.tutorial-install-note{margin:20px 4px 0;color:#87919f;font-size:12px;line-height:1.6}
+@media(min-width:1181px){.android-install-steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){.download-tutorial-tabs{width:100%;gap:2px}.download-tutorial-tabs button{min-width:0;padding:10px 8px;font-size:12px}.install-screenshot-steps .ios-tutorial-image{width:min(280px,100%);margin:8px auto 0}}
