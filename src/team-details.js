@@ -2,7 +2,9 @@
 export function buildTeams(standings, nameOf) {
   const teams=[];
   const add=(sport,league,conference,rows)=>rows.forEach((row,index)=>teams.push({id:`${sport}-${row[1]}`,sport,league,conference,row,rank:index+1,name:nameOf(row[0],row[1]),code:row[1]}));
-  Object.entries(standings.football).forEach(([league,rows])=>add('football',league,'',rows));
+  Object.entries(standings.football).filter(([league])=>league!=='欧冠').forEach(([league,rows])=>add('football',league,'',rows));
+  // Multiple competitions share one team identity and fixture pool.
+  teams.forEach(team=>{team.rankings=Object.fromEntries(Object.entries(standings.football).flatMap(([league,rows])=>{const rank=rows.findIndex(row=>row[1]===team.code);return rank<0?[]:[[league,{row:rows[rank],rank:rank+1}]]}));});
   Object.entries(standings.basketball).forEach(([league,groups])=>Object.entries(groups).forEach(([conference,rows])=>add('basketball',league,conference,rows)));
   return teams;
 }
@@ -28,7 +30,10 @@ export function extendTeamEvents(teams,events,make,followed) {
 export function createTeamDetail({teams,events,header,footer,mark,logo,score,followed}) {
   let activeId='',league='全部',page=1;
   function render(id) {
-    const team=teams.find(t=>t.id===id)||teams.find(t=>t.code===id);
+    const source=teams.find(t=>t.id===id)||teams.find(t=>t.code===id);
+    const selectedLeague=new URLSearchParams(location.hash.split('?')[1]||'').get('league');
+    const ranking=source?.rankings?.[selectedLeague];
+    const team=ranking?{...source,...ranking,league:selectedLeague}:source;
     if(!team)return `${header()}<main class="team-detail"><div class="team-empty">球队不存在，请返回球队排行选择球队。<p><a href="#/data">返回球队排行</a></p></div></main>${footer()}`;
     if(activeId!==team.id){activeId=team.id;league='全部';page=1;}
     const all=teamEvents(team,events),leagues=['全部',...new Set(all.map(e=>e.league))];
