@@ -1,3 +1,4 @@
+import './document-mode.js';
 import {volume,setVolume,playbackTime,replayPosition,seekReplay,replayControls,roomMedia,syncRoomMedia} from './room-playback.js';
 import {buildTeams,extendTeamEvents,createTeamDetail} from './team-details.js';
 import './team-details.css';
