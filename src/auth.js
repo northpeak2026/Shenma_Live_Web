@@ -90,6 +90,7 @@ export function authHeaderArea(link = hash => hash) {
         <a href="${link('#/profile/mock-user?tab=tasks')}" role="menuitem"><span>任务中心</span><b>›</b></a>
         <a href="${link('#/profile/mock-user?tab=checkin')}" role="menuitem"><span>每日签到</span><b>›</b></a>
         <a href="${link('#/profile/mock-user?tab=invite')}" role="menuitem"><span>邀请好友</span><b>›</b></a>
+        <a href="${link(currentUser.isCreator?'#/creator':'#/profile/mock-user?tab=creator')}" role="menuitem"><span>${currentUser.isCreator?'主播工作台':currentUser.creatorApplicationStatus==='reviewing'?'主播申请':'申请主播'}</span><b>›</b></a>
         <div class="auth-menu-divider" role="separator"></div>
         <button type="button" data-auth-logout role="menuitem"><span>退出登录</span><b>↗</b></button>
       </section>

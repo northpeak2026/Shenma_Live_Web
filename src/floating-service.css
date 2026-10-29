@@ -1,0 +1,13 @@
+.floating-service{position:fixed;z-index:44;right:30px;bottom:90px;display:flex;align-items:center;justify-content:center;gap:8px;min-width:110px;height:48px;padding:8px 16px;border:1px solid #e4eaf0;border-radius:24px;background:#fff;color:#677787;box-shadow:0 8px 22px #2c39491c;font-size:13px;font-weight:600;transition:color .18s,border-color .18s,box-shadow .18s}
+.service-assistant-icon{width:29px;height:29px;flex-shrink:0}
+.floating-service:hover{border-color:#ffc3b5;color:#f16a50;box-shadow:0 10px 25px #2c394925}
+.floating-download{z-index:45}
+.floating-download .download-panel{z-index:46}
+
+.floating-service{animation:chatInvitation 10s ease-in-out infinite}
+.floating-service .service-assistant-icon{animation:chatAssistantBreathe 4s ease-in-out infinite;transform-origin:center bottom}
+.floating-service:hover,.floating-service:focus-visible,.floating-service:hover .service-assistant-icon,.floating-service:focus-visible .service-assistant-icon{animation-play-state:paused}
+.floating-service:active{transform:scale(.97)}
+@keyframes chatInvitation{0%,82%,100%{transform:translateY(0) rotate(0)}86%{transform:translateY(-3px) rotate(-2deg)}90%{transform:translateY(-3px) rotate(2deg)}94%{transform:translateY(-1px) rotate(-1deg)}}
+@keyframes chatAssistantBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.floating-service,.floating-service .service-assistant-icon{animation:none}}
